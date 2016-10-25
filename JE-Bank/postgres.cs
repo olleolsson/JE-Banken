@@ -13,17 +13,16 @@ namespace JE_Bank
         //private NpgsqlConnection conn;
         //private NpgsqlCommand cmd;
         //private NpgsqlDataReader dr;
-        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;User Id=interaktiva_g26;Password=bankapp;Database=interaktiva_g26;SslMode=Require;");
+        NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["interaktiva_g26"].ConnectionString);
 
         public string TestSqlFråga()
         {
             conn.Open();
-
+            
             string fråga = "SELECT användarnamn FROM användare";
 
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(fråga, conn);
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
 
-            NpgsqlCommand cmd = new NpgsqlCommand(fråga);
             NpgsqlDataReader reader = cmd.ExecuteReader();
 
             Users nyAnvändare = new Users();
@@ -33,10 +32,13 @@ namespace JE_Bank
                 {
                     Användarnamn = reader["användarnamn"].ToString()
                 };
+                reader.Close();
+
+                conn.Close();               
             return nyAnvändare.Användarnamn;
 
 
-            conn.Close();
+
         }
 
 
