@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<quiz>
+  <title>Testet</title>
+  <Frågor>
+    <Produkter>
+      <fråga>
+        <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
+        <svar rätt="y">2009</svar>
+        <svar>2008</svar>
+        <svar>2007</svar>
+        <svar>2010</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vad heter spelet där man blir jagad på en järnvägsräls efter att blivit påkommen när man målar grafitti?</Frågan>
+        <svar rätt="y">Subway Surfers</svar>
+        <svar>Run run run</svar>
+        <svar>Temple Run</svar>
+        <svar>Metro underground</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vad är den romerska siffran för 100?</Frågan>
+        <svar rätt="y">C</svar>
+        <svar>M</svar>
+        <svar>D</svar>
+        <svar>X</svar>
+      </fråga>
+      <fråga>
+        <Frågan>
+        Vatten är en fantastisk kemisk förening av väte och syre som är nödvändigt för allt känt liv. Vid vilken temperatur är vatten som tyngst(högst densitet)?
+      </Frågan>
+        <svar rätt="y">4 grader Celsius</svar>
+        <svar>0 grader Celsius</svar>
+        <svar>-4 grader Celcius</svar>
+        <svar>-10 grader Celcius</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>
+        <svar rätt="y">Florens</svar>
+        <svar>Verona</svar>
+        <svar>Rom</svar>
+        <svar>Venedig</svar>
+      </fråga>
+    </Produkter>
+    <Ekonomi>
+      <fråga>
+        <Frågan>
+        Vilken film som släpptes under 2014 har denna korta sammanfattning på filmsiten IMDB?
+
+        "A team of explorers travel through a wormhole in space in an attempt to ensure
+        humanity's survival."
+      </Frågan>
+        <svar rätt="y">Interstellar</svar>
+        <svar>Project Almanac</svar>
+        <svar>Guardians of the Galaxy </svar>
+        <svar>Star Wars</svar>
+      </fråga>
+      <fråga>
+        <Frågan>23 maj 2015 i Wien tog Måns "mums-mums" Zelmerlöw hem Sveriges sjätte seger i Eurovision song contest. Vårt grannland Norge har inte lika många segrar. Hur många segrar har dom?</Frågan>
+        <svar rätt="y">3</svar>
+        <svar>2</svar>
+        <svar>1</svar>
+        <svar>0</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vilken ministerpost i regeringen har Magdalena Andersson?</Frågan>
+        <svar rätt="y">Finansminister</svar>
+        <svar>Socialminister</svar>
+        <svar>Utbildningsminister</svar>
+        <svar>Stadsminister</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vilken medelhastighet har ett fordon som färdas 60km på 4 timmar? </Frågan>
+        <svar rätt="y">15km/h</svar>
+        <svar>30km/h</svar>
+        <svar>20km/h</svar>
+        <svar>25km/h</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vad heter fotbollslaget Barcelona FC:s hemmaarena?</Frågan>
+        <svar rätt="y">Camp Nou</svar>
+        <svar>Olympiastadion</svar>
+        <svar>San Siro</svar>
+        <svar>Norrporten Arena</svar>
+      </fråga>
+    </Ekonomi>
+    <Etik>
+      <fråga>
+        <Frågan>Vilken är världens största stad (sett till befolkningsantal)?</Frågan>
+        <svar rätt="y">Tokyo</svar>
+        <svar>Mexico City</svar>
+        <svar>New York</svar>
+        <svar>Bejing</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Den 10 april 1912 lämnade Titanic sin hamn för sin jungfruresa, som alla vet kom Titanic aldrig  fram till sin slutdestination utan den 14 April kolliderade oceanångaren med ett isberg och katastrofen var ett faktum. Vilken start och slutdestination hade Titanic?</Frågan>
+        <svar rätt="y">Southampton - New York </svar>
+        <svar>Liverpool - New York</svar>
+        <svar>London - New York</svar>
+        <svar>Manchester - New York</svar>
+      </fråga>
+      <fråga>
+        <Frågan>i vilken svensk stad hålls varje år musikfestivalen Peace and Love?</Frågan>
+        <svar rätt="y">Borlänge</svar>
+        <svar>Karlstad</svar>
+        <svar>Mora</svar>
+        <svar>Norrköping</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vad heter den flod som rinner förbi Hamburg?</Frågan>
+        <svar rätt="y">Elbe</svar>
+        <svar>Donau</svar>
+        <svar>Nilen</svar>
+        <svar>Ljungan</svar>
+      </fråga>
+      <fråga>
+        <Frågan>Vad heter Afghanistans huvudstad?</Frågan>
+        <svar rätt="y">Kabul</svar>
+        <svar>Stockholm</svar>
+        <svar>London</svar>
+        <svar>Rom</svar>
+      </fråga>
+    </Etik>
+  </Frågor>
+</quiz>

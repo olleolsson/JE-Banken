@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.aspx" />
+    <Content Include="lillaTestet.xml" />
+    <Content Include="storaTestet.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
