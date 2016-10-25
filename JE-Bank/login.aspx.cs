@@ -29,15 +29,10 @@ namespace JE_Bank
 
         }
 
-        public void logIn
-        {
+        //public void logIn
+        //{
 
-        }
-
-        protected void btnAdmin_Click(object sender, EventArgs e)
-        {
-
-        }
+        //}
 
         protected void btnLogIn1_Click(object sender, EventArgs e)
         {
@@ -55,6 +50,11 @@ namespace JE_Bank
         }
 
         protected void btnLogIn4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAdmin_Click(object sender, EventArgs e)
         {
 
         }
