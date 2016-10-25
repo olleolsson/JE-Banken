@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dlls\Mono.Security.dll" />
+    <Content Include="dlls\Npgsql.dll" />
     <Content Include="index.aspx" />
     <Content Include="lillaTestet.xml" />
     <Content Include="storaTestet.xml" />
