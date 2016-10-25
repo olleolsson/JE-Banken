@@ -43,7 +43,7 @@ namespace JE_Bank
         XmlDocument doc = new XmlDocument();
         doc.Load(path);
 
-        XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/Produkter/fråga");
+        XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
 
         foreach (XmlNode node in allafrågor)
         {
@@ -52,23 +52,6 @@ namespace JE_Bank
             Lillatestet.Add(f);
         }
 
-        allafrågor = doc.SelectNodes("/quiz/Frågor/Ekonomi/fråga");
-
-        foreach (XmlNode node in allafrågor)
-        {
-            Prov f = new Prov();
-            f.Fråga = node["Frågan"].InnerText;
-            Lillatestet.Add(f);
-        }
-
-        allafrågor = doc.SelectNodes("/quiz/Frågor/Etik/fråga");
-
-        foreach (XmlNode node in allafrågor)
-        {
-            Prov f = new Prov();
-            f.Fråga = node["Frågan"].InnerText;
-            Lillatestet.Add(f);
-        }
         return Lillatestet;       
 
         }
@@ -83,7 +66,7 @@ namespace JE_Bank
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
-            XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/Produkter/fråga");
+            XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
 
             foreach (XmlNode node in allafrågor)
             {
@@ -92,23 +75,6 @@ namespace JE_Bank
                 Storatestet.Add(f);
             }
 
-            allafrågor = doc.SelectNodes("/quiz/Frågor/Ekonomi/fråga");
-
-            foreach (XmlNode node in allafrågor)
-            {
-                Prov f = new Prov();
-                f.Fråga = node["Frågan"].InnerText;
-                Storatestet.Add(f);
-            }
-
-            allafrågor = doc.SelectNodes("/quiz/Frågor/Etik/fråga");
-
-            foreach (XmlNode node in allafrågor)
-            {
-                Prov f = new Prov();
-                f.Fråga = node["Frågan"].InnerText;
-                Storatestet.Add(f);
-            }
             return Storatestet;
 
         }
