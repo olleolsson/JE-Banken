@@ -78,5 +78,11 @@ namespace JE_Bank
             return Storatestet;
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Postgres pg = new Postgres();
+            allafrågor.InnerText = pg.TestSqlFråga();
+        }
     }
 }

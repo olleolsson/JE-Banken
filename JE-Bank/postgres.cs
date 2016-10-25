@@ -7,35 +7,38 @@ using System.Configuration;
 
 namespace JE_Bank
 {
-    public class postgres
+    public class Postgres
     {
 
-        private NpgsqlConnection conn;
-        private NpgsqlCommand cmd;
-        private NpgsqlDataReader dr;
+        //private NpgsqlConnection conn;
+        //private NpgsqlCommand cmd;
+        //private NpgsqlDataReader dr;
 
         // Skapar koppling mot databas
-        static void PgOpen()
+        private void PgOpen()
         {
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;User Id=interaktiva_g26;Password=bankapp;Database=interaktiva_g26;SslMode=Require;");
             conn.Open();
         }
 
-        static void PgClose()
+        private void PgClose()
         {
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432;User Id=interaktiva_g26;Password=bankapp;Database=interaktiva_g26;SslMode=Require;");
             conn.Close();
         }
 
-        public void TestSqlFråga()
+        public string TestSqlFråga()
         {
             PgOpen();
 
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM användare");
+            string fråga = "SELECT användarnamn FROM användare";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(fråga, conn);
+
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga);
             NpgsqlDataReader reader = cmd.ExecuteReader();
 
-
-            PgClose();
+            conn.Close();
         }
 
 
