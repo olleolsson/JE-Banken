@@ -7,5 +7,8 @@ namespace JE_Bank
 {
     public class Users
     {
+        public string Användarnamn { get; set; }
+        public string Användartyp { get; set; }
+        public bool Certifierad { get; set; }
     }
 }
