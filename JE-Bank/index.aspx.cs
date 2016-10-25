@@ -48,8 +48,26 @@ namespace JE_Bank
             Lillatestet.Add(f);
         }
 
+        allafrågor = doc.SelectNodes("/quiz/Frågor/Ekonomi/fråga");
+
+        foreach (XmlNode node in allafrågor)
+        {
+            Prov f = new Prov();
+            f.Fråga = node["Frågan"].InnerText;
+            Lillatestet.Add(f);
+        }
+
+        allafrågor = doc.SelectNodes("/quiz/Frågor/Etik/fråga");
+
+        foreach (XmlNode node in allafrågor)
+        {
+            Prov f = new Prov();
+            f.Fråga = node["Frågan"].InnerText;
+            Lillatestet.Add(f);
+        }
         return Lillatestet;       
 
         }
+
     }
 }
