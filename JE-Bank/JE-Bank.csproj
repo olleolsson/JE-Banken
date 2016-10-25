@@ -61,6 +61,7 @@
     <Content Include="dlls\Npgsql.dll" />
     <Content Include="index.aspx" />
     <Content Include="lillaTestet.xml" />
+    <Content Include="login.aspx" />
     <Content Include="storaTestet.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -72,11 +73,11 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="login.aspx.cs">
+    <Compile Include="logIn.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="login.aspx.designer.cs">
+    <Compile Include="logIn.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
