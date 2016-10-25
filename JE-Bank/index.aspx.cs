@@ -15,7 +15,8 @@ namespace JE_Bank
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           AppendProv(xmlToList());
+           AppendProv(xmlToListLilla());
+           AppendProv(xmlToListStora());
         }
 
         public void AppendProv(List<Prov> frågor) 
@@ -31,8 +32,11 @@ namespace JE_Bank
         }
 
 
-        public List<Prov> xmlToList() 
+
+	
+        public List<Prov> xmlToListLilla() 
         {
+
         List<Prov> Lillatestet = new List<Prov>();
 
         string path = Server.MapPath("lillaTestet.xml");
@@ -69,5 +73,44 @@ namespace JE_Bank
 
         }
 
+
+        public List<Prov> xmlToListStora()
+        {
+
+            List<Prov> Storatestet = new List<Prov>();
+
+            string path = Server.MapPath("storaTestet.xml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+
+            XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/Produkter/fråga");
+
+            foreach (XmlNode node in allafrågor)
+            {
+                Prov f = new Prov();
+                f.Fråga = node["Frågan"].InnerText;
+                Storatestet.Add(f);
+            }
+
+            allafrågor = doc.SelectNodes("/quiz/Frågor/Ekonomi/fråga");
+
+            foreach (XmlNode node in allafrågor)
+            {
+                Prov f = new Prov();
+                f.Fråga = node["Frågan"].InnerText;
+                Storatestet.Add(f);
+            }
+
+            allafrågor = doc.SelectNodes("/quiz/Frågor/Etik/fråga");
+
+            foreach (XmlNode node in allafrågor)
+            {
+                Prov f = new Prov();
+                f.Fråga = node["Frågan"].InnerText;
+                Storatestet.Add(f);
+            }
+            return Storatestet;
+
+        }
     }
 }
