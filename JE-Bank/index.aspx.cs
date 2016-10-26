@@ -26,6 +26,10 @@ namespace JE_Bank
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.InnerText = f.Frågan;
                 allafrågor.Controls.Add(div);
+                foreach (Svar a in )
+                {
+                    
+                }
             
             }
         
@@ -52,12 +56,12 @@ namespace JE_Bank
             f.Frågan = node["Frågan"].InnerText;
             Lillatestet.Add(f);
 
-            foreach (XmlNode nod in allasvar)
+            for (int i = 1; i < node.ChildNodes.Count; i++)
             {
                 Svar s = new Svar();
-                s.Svaren = nod["svar"].InnerText;
+                s.Svaren = node.ChildNodes[i].InnerText;
                 f.Svarsalternativ.Add(s);
-            }
+            }           
         }
 
         return Lillatestet;       
@@ -81,6 +85,13 @@ namespace JE_Bank
                 Fråga f = new Fråga();
                 f.Frågan = node["Frågan"].InnerText;
                 Storatestet.Add(f);
+
+                for (int i = 1; i < node.ChildNodes.Count; i++)
+                {
+                    Svar s = new Svar();
+                    s.Svaren = node.ChildNodes[i].InnerText;
+                    f.Svarsalternativ.Add(s);
+                }
             }
 
             return Storatestet;

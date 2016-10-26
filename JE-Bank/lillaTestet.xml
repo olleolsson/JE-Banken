@@ -4,7 +4,11 @@
   <Frågor>
     <Produkter>
       <fråga>
-        <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?<svar rätt="y">2009</svar><svar>2010</svar><svar>2007</svar><svar>2008</svar></Frågan>
+        <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
+        <svar>2007</svar>
+        <svar>2008</svar>
+        <svar>2010</svar>
+        <svar rätt="y">2009</svar>
       </fråga>
       <fråga>
         <Frågan>Vad heter spelet där man blir jagad på en järnvägsräls efter att blivit påkommen när man målar grafitti?</Frågan>

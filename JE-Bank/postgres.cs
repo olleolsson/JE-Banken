@@ -10,10 +10,47 @@ namespace JE_Bank
     public class Postgres
     {
 
-        //private NpgsqlConnection conn;
-        //private NpgsqlCommand cmd;
-        //private NpgsqlDataReader dr;
-        NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["interaktiva_g26"].ConnectionString);
+        private NpgsqlConnection conn;
+        private NpgsqlCommand cmd;
+        private NpgsqlDataReader dr;
+
+        public Postgres()
+        {
+            conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["interaktiva_g26"].ConnectionString);
+            conn.Open();
+        }
+
+
+        private void sqlNonQuery(string fråga) // Ger möjlighet att ställa frågor mot databas
+        {
+            try
+            {
+                cmd = new NpgsqlCommand(fråga, conn);
+                cmd.ExecuteNonQuery();
+            }
+
+            catch 
+            {
+                
+            }
+        }
+
+        private NpgsqlDataReader sqlFråga(string fråga) // Skickar in fråga och retunerar från databas
+        {
+            try
+            {
+                cmd = new NpgsqlCommand(fråga, conn);
+                dr = cmd.ExecuteReader();
+
+                return dr;
+            }
+
+            catch 
+            {              
+                return null;
+            }
+        }
+
 
         public string TestSqlFråga()
         {
@@ -36,12 +73,6 @@ namespace JE_Bank
 
                 conn.Close();               
             return nyAnvändare.Användarnamn;
-
-
-
         }
-
-
-
     }
 }
