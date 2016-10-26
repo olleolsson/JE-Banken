@@ -19,9 +19,9 @@ namespace JE_Bank
            AppendProv(xmlToListStora());
         }
 
-        public void AppendProv(List<Prov> frågor) 
+        public void AppendProv(List<Fråga> frågor) 
         {
-            foreach (Prov f in frågor) 
+            foreach (Fråga f in frågor) 
             {
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.InnerText = f.Fråga;
@@ -34,10 +34,10 @@ namespace JE_Bank
 
 
 	
-        public List<Prov> xmlToListLilla() 
+        public List<Fråga> xmlToListLilla() 
         {
 
-        List<Prov> Lillatestet = new List<Prov>();
+        List<Fråga> Lillatestet = new List<Fråga>();
 
         string path = Server.MapPath("lillaTestet.xml");
         XmlDocument doc = new XmlDocument();
@@ -47,7 +47,7 @@ namespace JE_Bank
 
         foreach (XmlNode node in allafrågor)
         {
-            Prov f = new Prov();
+            Fråga f = new Fråga();
             f.Fråga = node["Frågan"].InnerText;
             Lillatestet.Add(f);
         }
@@ -57,10 +57,10 @@ namespace JE_Bank
         }
 
 
-        public List<Prov> xmlToListStora()
+        public List<Fråga> xmlToListStora()
         {
 
-            List<Prov> Storatestet = new List<Prov>();
+            List<Fråga> Storatestet = new List<Fråga>();
 
             string path = Server.MapPath("storaTestet.xml");
             XmlDocument doc = new XmlDocument();
@@ -70,7 +70,7 @@ namespace JE_Bank
 
             foreach (XmlNode node in allafrågor)
             {
-                Prov f = new Prov();
+                Fråga f = new Fråga();
                 f.Fråga = node["Frågan"].InnerText;
                 Storatestet.Add(f);
             }
