@@ -19,12 +19,12 @@ namespace JE_Bank
            AppendProv(xmlToListStora());
         }
 
-        public void AppendProv(List<Fråga> frågor) 
+        public void AppendProv(List<Frågan> frågor) 
         {
-            foreach (Fråga f in frågor) 
+            foreach (Frågan f in frågor) 
             {
                 HtmlGenericControl div = new HtmlGenericControl("div");
-                div.InnerText = f.Fråga;
+                div.InnerText = f.Frågan;
                 allafrågor.Controls.Add(div);
             
             }
@@ -34,10 +34,10 @@ namespace JE_Bank
 
 
 	
-        public List<Fråga> xmlToListLilla() 
+        public List<Frågan> xmlToListLilla() 
         {
 
-        List<Fråga> Lillatestet = new List<Fråga>();
+        List<Frågan> Lillatestet = new List<Frågan>();
 
         string path = Server.MapPath("lillaTestet.xml");
         XmlDocument doc = new XmlDocument();
@@ -47,9 +47,16 @@ namespace JE_Bank
 
         foreach (XmlNode node in allafrågor)
         {
-            Fråga f = new Fråga();
-            f.Fråga = node["Frågan"].InnerText;
+            Frågan f = new Frågan();
+            f.Frågan = node["Frågan"].InnerText;
             Lillatestet.Add(f);
+
+            foreach (XmlNode nod in allafrågor)
+            {
+                Svar s = new Svar();
+                s.Svaren = nod["svar"].InnerText;
+                f.Svarsalternativ.Add(s);
+            }
         }
 
         return Lillatestet;       
@@ -57,10 +64,10 @@ namespace JE_Bank
         }
 
 
-        public List<Fråga> xmlToListStora()
+        public List<Frågan> xmlToListStora()
         {
 
-            List<Fråga> Storatestet = new List<Fråga>();
+            List<Frågan> Storatestet = new List<Frågan>();
 
             string path = Server.MapPath("storaTestet.xml");
             XmlDocument doc = new XmlDocument();
@@ -70,8 +77,8 @@ namespace JE_Bank
 
             foreach (XmlNode node in allafrågor)
             {
-                Fråga f = new Fråga();
-                f.Fråga = node["Frågan"].InnerText;
+                Frågan f = new Frågan();
+                f.Frågan = node["Frågan"].InnerText;
                 Storatestet.Add(f);
             }
 

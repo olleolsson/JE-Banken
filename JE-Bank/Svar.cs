@@ -7,6 +7,6 @@ namespace JE_Bank
 {
     public class Svar 
     {
-        public string Svar { get; set; }
+        public string Svaren { get; set; }
     }
 }
