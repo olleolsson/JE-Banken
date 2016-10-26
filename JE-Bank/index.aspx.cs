@@ -25,12 +25,15 @@ namespace JE_Bank
             {
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.InnerText = f.Frågan;
-                allafrågor.Controls.Add(div);
-                foreach (Svar a in )
+                allafrågor.Controls.Add(div);               
+
+                foreach (Svar s in f.Svarsalternativ)
                 {
-                    
+                    HtmlGenericControl div1 = new HtmlGenericControl("div");
+                    div1.InnerText = s.Svaren;
+                    allafrågor.Controls.Add(div1);
                 }
-            
+                
             }
         
         }
