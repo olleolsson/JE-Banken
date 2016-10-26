@@ -23,13 +23,13 @@ namespace JE_Bank
         {
             foreach (Fråga f in frågor) 
             {
-                HtmlGenericControl div = new HtmlGenericControl("div");
+                HtmlGenericControl div = new HtmlGenericControl("div id=frågan");
                 div.InnerText = f.Frågan;
                 allafrågor.Controls.Add(div);               
 
                 foreach (Svar s in f.Svarsalternativ)
                 {
-                    HtmlGenericControl div1 = new HtmlGenericControl("div");
+                    HtmlGenericControl div1 = new HtmlGenericControl("div id=svarsalternativ");
                     div1.InnerText = s.Svaren;
                     allafrågor.Controls.Add(div1);
                 }
