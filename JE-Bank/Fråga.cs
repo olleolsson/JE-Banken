@@ -7,7 +7,7 @@ namespace JE_Bank
 {
     public class Fråga
     {
-        public string fråga { get; set; }
-        public List<Svar> svarsalternativ { get; set; }
+        public string Fråga { get; set; }
+        public List<Svar> Svarsalternativ { get; set; }
     }
 }
