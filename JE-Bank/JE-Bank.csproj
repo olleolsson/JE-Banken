@@ -70,6 +70,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fråga.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,7 +94,6 @@
     </Compile>
     <Compile Include="Postgres.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Fråga.cs" />
     <Compile Include="Svar.cs" />
     <Compile Include="Users.cs" />
   </ItemGroup>
