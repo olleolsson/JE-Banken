@@ -39,5 +39,28 @@ namespace JE_Bank
                 conn.Close();               
             return nyAnvändare.Användarnamn;
         }
+
+        public string AnvändarTyp(string anvandare)
+        {
+            conn.Open();
+
+            string fråga = "SELECT certifierad FROM användare WHERE användarnamn =('" + anvandare + "')";
+
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
+
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+
+            Users nyAnvändare = new Users();
+
+            while (reader.Read())
+                nyAnvändare = new Users()
+                {
+                    Certifierad = Convert.ToBoolean(reader["certifierad"])
+                };
+            reader.Close();
+
+            conn.Close();
+            return nyAnvändare.Certifierad.ToString();
+        }
     }
 }
