@@ -44,6 +44,7 @@ namespace JE_Bank
         doc.Load(path);
 
         XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
+        XmlNodeList allasvar = doc.SelectNodes("/quiz/Frågor/*/fråga/Frågan");
 
         foreach (XmlNode node in allafrågor)
         {
@@ -51,7 +52,7 @@ namespace JE_Bank
             f.Frågan = node["Frågan"].InnerText;
             Lillatestet.Add(f);
 
-            foreach (XmlNode nod in allafrågor)
+            foreach (XmlNode nod in allasvar)
             {
                 Svar s = new Svar();
                 s.Svaren = nod["svar"].InnerText;
