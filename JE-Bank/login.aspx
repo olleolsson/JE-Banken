@@ -8,4 +8,5 @@
     <asp:Button ID="btnLogIn3" runat="server" OnClick="btnLogIn3_Click" Text="Användare 3" />
     <asp:Button ID="btnLogIn4" runat="server" OnClick="btnLogIn4_Click" Text="Användare 4" />
     <asp:Button ID="btnAdmin" runat="server" OnClick="btnAdmin_Click" Text="Admin" />
+    <div id ="allafrågor" runat ="server"></div>
 </asp:Content>

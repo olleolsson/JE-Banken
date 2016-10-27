@@ -53,10 +53,12 @@ namespace JE_Bank
             Users nyAnvändare = new Users();
 
             while (reader.Read())
+            {
                 nyAnvändare = new Users()
                 {
                     Certifierad = Convert.ToBoolean(reader["certifierad"])
                 };
+            }
             reader.Close();
 
             conn.Close();
