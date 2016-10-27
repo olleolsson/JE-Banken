@@ -28,13 +28,15 @@ namespace JE_Bank
                 allafrågor.Controls.Add(div);               
 
                 foreach (Svar s in f.Svarsalternativ)
-                {
-                    int i;
-                    HtmlGenericControl div1 = new HtmlGenericControl("div id=svarsalternativ");
+                {              
+                    HtmlGenericControl div1 = new HtmlGenericControl("div id=svarsalternativ");              
                     HtmlInputCheckBox input = new HtmlInputCheckBox();
                     div1.InnerText = s.Svaren;
-                    
-                    //allafrågor.Controls.Add(input);
+
+                    input.Value = div1.InnerText;
+
+                    allafrågor.Controls.Add(div1);
+                    allafrågor.Controls.Add(input);
                 }
                 
             }
