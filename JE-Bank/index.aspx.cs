@@ -21,25 +21,31 @@ namespace JE_Bank
 
         public void AppendProv(List<Fråga> frågor) 
         {
-            foreach (Fråga f in frågor) 
+            foreach (Fråga f in frågor)
             {
                 HtmlGenericControl div = new HtmlGenericControl("div id=frågan");
                 div.InnerText = f.Frågan;
-                allafrågor.Controls.Add(div);               
+
 
                 foreach (Svar s in f.Svarsalternativ)
-                {              
-                    HtmlGenericControl div1 = new HtmlGenericControl("div id=svarsalternativ");              
+                {
                     HtmlInputCheckBox input = new HtmlInputCheckBox();
-                    div1.InnerText = s.Svaren;
+                    HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
 
-                    input.Value = div1.InnerText;
+                    svar.InnerText = s.Svaren;
+                    input.Value = svar.InnerText;
 
-                    allafrågor.Controls.Add(div1);
-                    allafrågor.Controls.Add(input);
+                    svar.Controls.Add(input);
+                    div.Controls.Add(svar);
+
+
                 }
-                
+
+                allafrågor.Controls.Add(div);
+
             }
+        
+        
         
         }
 
