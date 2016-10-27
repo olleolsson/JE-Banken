@@ -26,11 +26,11 @@ namespace JE_Bank
                 HtmlGenericControl div = new HtmlGenericControl("div id=frågan");
                 div.InnerText = f.Frågan;
 
-
+                int i = 1;
                 foreach (Svar s in f.Svarsalternativ)
                 {
                     HtmlInputCheckBox input = new HtmlInputCheckBox();
-                    HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
+                    HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ" + i++);
 
                     svar.InnerText = s.Svaren;
                     input.Value = svar.InnerText;
@@ -73,8 +73,8 @@ namespace JE_Bank
             for (int i = 1; i < node.ChildNodes.Count; i++)
             {
                 Svar s = new Svar();
-                s.Svaren = node.ChildNodes[i].InnerText;
-                f.Svarsalternativ.Add(s);
+                s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
+                f.Svarsalternativ.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
             }           
         }
 
