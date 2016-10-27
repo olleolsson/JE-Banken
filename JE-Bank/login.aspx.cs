@@ -24,44 +24,36 @@ namespace JE_Bank
 
         protected void btnLogIn1_Click(object sender, EventArgs e)
         {
-            användare.Användarnamn = "1";
+            användare.Användarnamn = "1";                      
             
-            
-            
-                Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-            
-            
-
+            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
         }
 
         protected void btnLogIn2_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "2";
-            pg.AnvändarTyp(användare.Användarnamn);
-            Response.Redirect("~/index.aspx");
+
+            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
         }
 
         protected void btnLogIn3_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "3";
-            pg.AnvändarTyp(användare.Användarnamn);
-            Response.Redirect("~/index.aspx");
+            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
 
         }
 
         protected void btnLogIn4_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "4";
-            pg.AnvändarTyp(användare.Användarnamn);
-            Response.Redirect("~/index.aspx");
+            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
 
         }
 
         protected void btnAdmin_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "admin";
-            pg.AnvändarTyp(användare.Användarnamn);
-            Response.Redirect("~/index.aspx");
+            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
         }
 
     }
