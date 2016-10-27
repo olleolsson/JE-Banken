@@ -15,8 +15,24 @@ namespace JE_Bank
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           AppendProv(xmlToListLilla());
-           AppendProv(xmlToListStora());
+           Users användare = new Users();
+            Postgres pg = new Postgres();
+            användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+            
+
+            if (användare.Certifierad == true)
+            {
+
+                AppendProv(xmlToListLilla());
+            }
+
+            if (användare.Certifierad == false)
+            {
+                AppendProv(xmlToListStora());
+            }
+
+
         }
 
         public void AppendProv(List<Fråga> frågor) 
