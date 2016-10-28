@@ -53,21 +53,25 @@ namespace JE_Bank
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(frågan);
 
+                HtmlGenericControl form = new HtmlGenericControl("form");
+
 
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
 
                     HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
                     HtmlGenericControl svarText = new HtmlGenericControl("div id=svarstext");
-                    HtmlInputCheckBox input = new HtmlInputCheckBox();
-
+                    //HtmlInputCheckBox input = new HtmlInputCheckBox();
+                    HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
 
                     svarText.InnerText = s.Svaren;
-                    input.Value = s.RättSvar.ToString();
+                    //input.Value = s.RättSvar.ToString();
 
-                    svar.Controls.Add(input);
+                    //svar.Controls.Add(input);
+                    svar.Controls.Add(rdbtn);
                     svar.Controls.Add(svarText);
-                    frågeruta.Controls.Add(svar);
+                    form.Controls.Add(svar);
+                    frågeruta.Controls.Add(form);
 
 
                 }
