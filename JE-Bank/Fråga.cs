@@ -8,11 +8,11 @@ namespace JE_Bank
     public class Fråga
     {
         public string Frågan { get; set; }
-        public List<Svar> Svarsalternativ { get; set; } 
+        public List<Svarsalternativ> Svarsalternativslista { get; set; } 
 
         public Fråga()
         {
-            Svarsalternativ = new List<Svar>();
+            Svarsalternativslista = new List<Svarsalternativ>();
         }
     }
 
