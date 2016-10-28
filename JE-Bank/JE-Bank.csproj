@@ -95,7 +95,7 @@
     </Compile>
     <Compile Include="Postgres.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Svar.cs" />
+    <Compile Include="Svarsalternativ.cs" />
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
