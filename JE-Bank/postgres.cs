@@ -67,5 +67,57 @@ namespace JE_Bank
             conn.Close();
             return nyAnvändare.Certifierad.ToString();
         }
+
+        public void sättTidGodkänd(string anvandare)//Fråga för att sätta datum för avklarat test
+        {
+            conn.Open();
+
+            string fråga = "UPDATE resultat SET godkänd = CURRENT_TIMESTAMP WHERE användare = @anvandare";
+
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
+            cmd.Parameters.AddWithValue("anvandare", anvandare);
+
+            conn.Close();
+        }
+
+        public void sättTidGjortTest(string anvandare)//Fråga för att sätta datum för rättat test
+        {
+            conn.Open();
+
+            string fråga = "UPDATE resultat SET datum_utförd = CURRENT_TIMESTAMP WHERE användare = @anvandare";
+
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
+            cmd.Parameters.AddWithValue("anvandare", anvandare);
+
+            conn.Close();
+        }
+
+        public string hämtaDatumGodkänd(string anvandare)
+        {
+            conn.Open();
+
+            string fråga = "SELECT godkänd FROM resultat WHERE godkänd < current_timestamp AND användare = @anvandare";
+
+
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
+            cmd.Parameters.AddWithValue("anvandare", anvandare);
+
+
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+
+            Users nyAnvändare = new Users();
+
+            while (reader.Read())
+            {
+                nyAnvändare = new Users()
+                {
+                    Certifierad = Convert.ToBoolean(reader["certifierad"])
+                };
+            }
+            reader.Close();
+
+            conn.Close();
+            return nyAnvändare.Certifierad.ToString();
+        }
     }
 }
