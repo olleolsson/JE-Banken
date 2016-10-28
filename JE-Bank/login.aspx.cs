@@ -19,14 +19,20 @@ namespace JE_Bank
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+           
         }
 
         protected void btnLogIn1_Click(object sender, EventArgs e)
         {
-            användare.Användarnamn = "1";                      
+            användare.Användarnamn = "1";
+            användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
+
+            if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
+            {
+                Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            }
             
-            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            
         }
 
         protected void btnLogIn2_Click(object sender, EventArgs e)

@@ -92,7 +92,7 @@ namespace JE_Bank
             conn.Close();
         }
 
-        public string hämtaDatumGodkänd(string anvandare)
+        public DateTime hämtaDatumGodkänd(string anvandare)
         {
             conn.Open();
 
@@ -111,13 +111,13 @@ namespace JE_Bank
             {
                 nyAnvändare = new Users()
                 {
-                    Certifierad = Convert.ToBoolean(reader["certifierad"])
+                    Godkänd = Convert.ToDateTime(reader["godkänd"])
                 };
             }
             reader.Close();
 
             conn.Close();
-            return nyAnvändare.Certifierad.ToString();
+            return nyAnvändare.Godkänd;
         }
     }
 }
