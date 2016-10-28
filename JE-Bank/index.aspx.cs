@@ -63,7 +63,7 @@ namespace JE_Bank
 
 
                     svarText.InnerText = s.Svaren;
-                    input.Value = s.Svaren;
+                    input.Value = s.RättSvar.ToString();
 
                     svar.Controls.Add(input);
                     svar.Controls.Add(svarText);
@@ -107,6 +107,18 @@ namespace JE_Bank
             {
                 Svarsalternativ s = new Svarsalternativ();
                 s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
+
+
+                if (node.ChildNodes[i].Attributes.Count == 0)
+                {
+                    s.RättSvar = false;
+                }
+                else if (node.ChildNodes[i].Attributes.Count >= 1)
+                {
+                    s.RättSvar = true;
+                }
+
+
                 f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
             }           
         }
@@ -137,6 +149,17 @@ namespace JE_Bank
                 {
                     Svarsalternativ s = new Svarsalternativ();
                     s.Svaren = node.ChildNodes[i].InnerText;
+
+                    if (node.ChildNodes[i].Attributes.Count == 0)
+                    {
+                        s.RättSvar = false;
+                    }
+                    else if (node.ChildNodes[i].Attributes.Count >= 1)
+                    {
+                        s.RättSvar = true;
+                    }
+
+
                     f.Svarsalternativslista.Add(s);
                 }
             }
