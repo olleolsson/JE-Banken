@@ -37,27 +37,44 @@ namespace JE_Bank
 
         public void AppendProv(List<Fråga> frågor) 
         {
+
+            int frågaNr = 1;
+
             foreach (Fråga f in frågor)
             {
-                HtmlGenericControl div = new HtmlGenericControl("div id=frågan");
-                div.InnerText = f.Frågan;
+                
 
-                int i = 1;
+                HtmlGenericControl frågeruta = new HtmlGenericControl("div id=frågeruta");
+                HtmlGenericControl frågenummer = new HtmlGenericControl("div id=frågenummer");
+                HtmlGenericControl frågan = new HtmlGenericControl("div id=frågan");
+                frågenummer.InnerText = "Fråga " + frågaNr++;
+                frågan.InnerText = f.Frågan;
+
+                frågeruta.Controls.Add(frågenummer);
+                frågeruta.Controls.Add(frågan);
+
+                
                 foreach (Svar s in f.Svarsalternativ)
                 {
-                    HtmlInputCheckBox input = new HtmlInputCheckBox();
-                    HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ" + i++);
 
-                    svar.InnerText = s.Svaren;
-                    input.Value = svar.InnerText;
+                    HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
+                    HtmlGenericControl svarText = new HtmlGenericControl("div id=svarstext");
+                    HtmlInputCheckBox input = new HtmlInputCheckBox();
+
+
+                    svarText.InnerText = s.Svaren;
+                    input.Value = s.Svaren;
 
                     svar.Controls.Add(input);
-                    div.Controls.Add(svar);
+                    svar.Controls.Add(svarText);
+                    frågeruta.Controls.Add(svar);
 
 
                 }
 
-                allafrågor.Controls.Add(div);
+
+                allafrågor.Controls.Add(frågeruta);
+                
 
             }
         
@@ -131,7 +148,7 @@ namespace JE_Bank
         protected void Button1_Click(object sender, EventArgs e)
         {
             Postgres pg = new Postgres();
-            allafrågor.InnerText = pg.TestSqlFråga();
+            //allafrågor.InnerText = pg.TestSqlFråga();
         }
     }
 }

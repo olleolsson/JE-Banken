@@ -67,6 +67,7 @@
     <Content Include="lillaTestet.xml" />
     <Content Include="login.aspx" />
     <Content Include="storaTestet.xml" />
+    <Content Include="StyleSheetFragor.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

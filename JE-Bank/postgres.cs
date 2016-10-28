@@ -44,9 +44,12 @@ namespace JE_Bank
         {
             conn.Open();
 
-            string fråga = "SELECT certifierad FROM användare WHERE användarnamn =('" + anvandare + "')";
+            string fråga = "SELECT certifierad FROM användare WHERE användarnamn = @anvandare";
+            
 
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
+            cmd.Parameters.AddWithValue("anvandare", anvandare);
+
 
             NpgsqlDataReader reader = cmd.ExecuteReader();
 

@@ -28,10 +28,10 @@
         <Frågan>
         Vatten är en fantastisk kemisk förening av väte och syre som är nödvändigt för allt känt liv. Vid vilken temperatur är vatten som tyngst(högst densitet)?
       </Frågan>
-        <svar rätt="y">4 grader Celsius</svar>
-        <svar>0 grader Celsius</svar>
-        <svar>-4 grader Celcius</svar>
-        <svar>-10 grader Celcius</svar>
+        <svar rätt="y">4°C</svar>
+        <svar>0°C</svar>
+        <svar>-4°C</svar>
+        <svar>-10°C</svar>
       </fråga>
       <fråga>
         <Frågan>Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>

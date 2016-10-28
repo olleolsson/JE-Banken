@@ -1,0 +1,43 @@
+﻿body {
+    background-color: #D5E2EB;
+}
+
+#ContentPlaceHolder1_allafrågor {
+    margin: auto;
+    width: 800px;
+}
+
+
+#frågeruta {
+    width: 100%;
+    border: solid black 1px;
+    background-color: #A5C4D6;
+    margin: 25px 0;
+}
+
+#svarsalternativ {
+    background-color: #5B9FB4;
+    margin: 10px;
+    width: 30%;
+    display: block;
+    border: solid black 1px;
+
+}
+
+#svarstext {
+    display: inline-block;
+    
+}
+
+#frågan{
+    margin: 15px 5px;
+}
+
+#frågenummer{
+    background-color: #0285A1;
+    padding: 5px;
+}
+
+/*.input {
+    display: inline-block;
+}*/
