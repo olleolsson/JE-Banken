@@ -7,7 +7,7 @@
         <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
         <svar rätt="y">2009</svar>
         <svar>2008</svar>
-        <svar>2007</svar>
+        <svar rätt="y">2007</svar>
         <svar>2010</svar>
       </fråga>
       <fråga>
@@ -36,7 +36,7 @@
       <fråga>
         <Frågan>Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>
         <svar rätt="y">Florens</svar>
-        <svar>Verona</svar>
+        <svar rätt="y">Verona</svar>
         <svar>Rom</svar>
         <svar>Venedig</svar>
       </fråga>
@@ -106,7 +106,7 @@
       <fråga>
         <Frågan>Vad heter fotbollslaget Barcelona FC:s hemmaarena?</Frågan>
         <svar rätt="y">Camp Nou</svar>
-        <svar>Olympiastadion</svar>
+        <svar rätt="y">Olympiastadion</svar>
         <svar>San Siro</svar>
         <svar>Norrporten Arena</svar>
       </fråga>
@@ -135,7 +135,7 @@
         <Frågan>Hur skrivs detta årtalet 2013 med romerska siffror?</Frågan>
         <svar rätt="y">MMXIII</svar>
         <svar>MCXIII</svar>
-        <svar>CCXIII</svar>
+        <svar rätt="y">CCXIII</svar>
         <svar>XXIIII</svar>
       </fråga>
     </Ekonomi>
@@ -186,7 +186,7 @@
         <Frågan>Vad heter Jerry Williams på riktigt?</Frågan>
         <svar rätt="y">Erik Fernström</svar>
         <svar>Daniel Edvinsson</svar>
-        <svar>Victor Olsson</svar>
+        <svar rätt="y">Victor Olsson</svar>
         <svar>Nathalie Olsson</svar>
       </fråga>
       <fråga>
