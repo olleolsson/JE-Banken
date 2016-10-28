@@ -26,11 +26,17 @@ namespace JE_Bank
         {
             användare.Användarnamn = "1";
             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
+            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
 
-            if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
-            {
-                Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-            }
+            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
+            //{
+            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            //}
+
+            //else
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+            //}
             
             
         }
@@ -39,20 +45,53 @@ namespace JE_Bank
         {
             användare.Användarnamn = "2";
 
+            användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
             Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+
+            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
+            //{
+            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            //}
+
+            //else
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+            //}
         }
 
         protected void btnLogIn3_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "3";
+            användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
             Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+
+            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
+            //{
+            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            //}
+
+            //else
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+            //}
 
         }
 
         protected void btnLogIn4_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "4";
+            användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
             Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+
+            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
+            //{
+            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            //}
+
+            //else
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+            //}
 
         }
 
