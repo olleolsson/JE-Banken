@@ -7,7 +7,7 @@
         <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
         <svar>2007</svar>
         <svar>2008</svar>
-        <svar>2010</svar>
+        <svar rätt="y">2010</svar>
         <svar rätt="y">2009</svar>
       </fråga>
       <fråga>

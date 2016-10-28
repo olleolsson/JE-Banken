@@ -19,7 +19,6 @@ namespace JE_Bank
             Postgres pg = new Postgres();
             användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
             användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
-            
 
             if (användare.Certifierad == true)
             {
@@ -31,19 +30,16 @@ namespace JE_Bank
             {
                 AppendProv(xmlToListStora());
             }
-
-
         }
-
+      
         public void AppendProv(List<Fråga> frågor) 
         {
-
             int frågaNr = 1;
 
             foreach (Fråga f in frågor)
             {
+                int x = 0;
                 
-
                 HtmlGenericControl frågeruta = new HtmlGenericControl("div id=frågeruta");
                 HtmlGenericControl frågenummer = new HtmlGenericControl("div id=frågenummer");
                 HtmlGenericControl frågan = new HtmlGenericControl("div id=frågan");
@@ -54,44 +50,45 @@ namespace JE_Bank
                 frågeruta.Controls.Add(frågan);
 
                 HtmlGenericControl form = new HtmlGenericControl("form");
-
+                foreach (Svarsalternativ s in f.Svarsalternativslista)
+                {
+                    
+                    if (s.RättSvar == true)
+                    {
+                        x++;
+                    }
+                }
 
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
-
                     HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
                     HtmlGenericControl svarText = new HtmlGenericControl("div id=svarstext");
-                    //HtmlInputCheckBox input = new HtmlInputCheckBox();
                     HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
-
+                    HtmlInputCheckBox input = new HtmlInputCheckBox();
                     svarText.InnerText = s.Svaren;
-                    //input.Value = s.RättSvar.ToString();
 
-                    //svar.Controls.Add(input);
-                    svar.Controls.Add(rdbtn);
+                    if (x >= 2)
+                    {
+                        input.Value = s.RättSvar.ToString();
+                        svar.Controls.Add(input);
+                    }
+
+                    if (x==1)
+                    {
+                        rdbtn.Value = s.RättSvar.ToString();
+                        svar.Controls.Add(rdbtn);
+                    }
                     svar.Controls.Add(svarText);
+
                     form.Controls.Add(svar);
                     frågeruta.Controls.Add(form);
-
-
-                }
-
-
-                allafrågor.Controls.Add(frågeruta);
-                
-
-            }
-        
-        
-        
+                    allafrågor.Controls.Add(frågeruta);
+                }             
+            }              
         }
-
-
-
 	
         public List<Fråga> xmlToListLilla() 
         {
-
         List<Fråga> Lillatestet = new List<Fråga>();
 
         string path = Server.MapPath("lillaTestet.xml");
@@ -126,15 +123,11 @@ namespace JE_Bank
                 f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
             }           
         }
-
         return Lillatestet;       
-
         }
-
 
         public List<Fråga> xmlToListStora()
         {
-
             List<Fråga> Storatestet = new List<Fråga>();
 
             string path = Server.MapPath("storaTestet.xml");
@@ -162,14 +155,10 @@ namespace JE_Bank
                     {
                         s.RättSvar = true;
                     }
-
-
                     f.Svarsalternativslista.Add(s);
                 }
             }
-
             return Storatestet;
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
