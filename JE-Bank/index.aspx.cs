@@ -53,8 +53,8 @@ namespace JE_Bank
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(frågan);
 
-                
-                foreach (Svar s in f.Svarsalternativ)
+
+                foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
 
                     HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
@@ -105,9 +105,9 @@ namespace JE_Bank
 
             for (int i = 1; i < node.ChildNodes.Count; i++)
             {
-                Svar s = new Svar();
+                Svarsalternativ s = new Svarsalternativ();
                 s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
-                f.Svarsalternativ.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
+                f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
             }           
         }
 
@@ -135,9 +135,9 @@ namespace JE_Bank
 
                 for (int i = 1; i < node.ChildNodes.Count; i++)
                 {
-                    Svar s = new Svar();
+                    Svarsalternativ s = new Svarsalternativ();
                     s.Svaren = node.ChildNodes[i].InnerText;
-                    f.Svarsalternativ.Add(s);
+                    f.Svarsalternativslista.Add(s);
                 }
             }
 
