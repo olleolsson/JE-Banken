@@ -7,7 +7,7 @@
         <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
         <svar>2007</svar>
         <svar>2008</svar>
-        <svar rätt="y">2010</svar>
+        <svar>2010</svar>
         <svar rätt="y">2009</svar>
       </fråga>
       <fråga>
@@ -36,7 +36,7 @@
       <fråga>
         <Frågan>Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>
         <svar rätt="y">Florens</svar>
-        <svar rätt="y">Verona</svar>
+        <svar>Verona</svar>
         <svar>Rom</svar>
         <svar>Venedig</svar>
       </fråga>
@@ -94,8 +94,8 @@
       <fråga>
         <Frågan>Den 10 april 1912 lämnade Titanic sin hamn för sin jungfruresa, som alla vet kom Titanic aldrig  fram till sin slutdestination utan den 14 April kolliderade oceanångaren med ett isberg och katastrofen var ett faktum. Vilken start och slutdestination hade Titanic?</Frågan>
         <svar rätt="y">Southampton - New York </svar>
-        <svar rätt="y">Liverpool - New York</svar>
-        <svar rätt="y">London - New York</svar>
+        <svar>Liverpool - New York</svar>
+        <svar>London - New York</svar>
         <svar>Manchester - New York</svar>
       </fråga>
       <fråga>
@@ -108,7 +108,7 @@
       <fråga>
         <Frågan>Vad heter den flod som rinner förbi Hamburg?</Frågan>
         <svar rätt="y">Elbe</svar>
-        <svar rätt="y">Donau</svar>
+        <svar>Donau</svar>
         <svar>Nilen</svar>
         <svar>Ljungan</svar>
       </fråga>

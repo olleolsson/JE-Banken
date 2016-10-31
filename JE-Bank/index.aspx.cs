@@ -13,6 +13,10 @@ namespace JE_Bank
 {
     public partial class index : System.Web.UI.Page
     {
+        HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
+        HtmlInputCheckBox input = new HtmlInputCheckBox();
+        public List<Fråga> frågor = new List<Fråga>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
            Users användare = new Users();
@@ -63,8 +67,11 @@ namespace JE_Bank
                 {
                     HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
                     HtmlGenericControl svarText = new HtmlGenericControl("div id=svarstext");
-                    HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
-                    HtmlInputCheckBox input = new HtmlInputCheckBox();
+
+                    rdbtn = new HtmlInputRadioButton();
+                    input = new HtmlInputCheckBox();
+
+
                     svarText.InnerText = s.Svaren;
 
                     if (x >= 2)
@@ -163,6 +170,25 @@ namespace JE_Bank
 
         protected void btnRätta_Click(object sender, EventArgs e)
         {
+            int antalRätt = 0;
+
+            foreach (Fråga f in frågor)
+            {
+                foreach (Svarsalternativ s in f.Svarsalternativslista)
+                {
+                    if (s.RättSvar && rdbtn.Value == "True" && rdbtn.Checked)
+                    {
+                        antalRätt++;
+                    }
+                }
+            }
+
+            //ptagg.InnerText = antalRätt.ToString();
+        }
+
+        public void Rätta()
+        {
+
 
         }
 
