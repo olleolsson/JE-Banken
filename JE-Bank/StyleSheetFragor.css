@@ -2,20 +2,20 @@
     background-color: #D5E2EB;
 }
 
-#ContentPlaceHolder1_allafrågor {
+#allafrågor {
     margin: auto;
     width: 800px;
 }
 
 
-#frågeruta {
+.frågeruta {
     width: 100%;
     border: solid black 1px;
     background-color: #A5C4D6;
     margin: 25px 0;
 }
 
-#svarsalternativ {
+.svarsalternativ {
     background-color: #5B9FB4;
     margin: 10px;
     width: 30%;
@@ -29,11 +29,12 @@
     
 }
 
-#frågan{
+.frågan{
     margin: 15px 5px;
 }
 
-#frågenummer{
+.frågenummer{
+    background-color: #5B9FB4;
     background-color: #0285A1;
     padding: 5px;
 }
