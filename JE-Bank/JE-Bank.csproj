@@ -64,10 +64,12 @@
     <Content Include="dlls\Mono.Security.dll" />
     <Content Include="dlls\Npgsql.dll" />
     <Content Include="index.aspx" />
+    <Content Include="indexLilla.aspx" />
     <Content Include="lillaTestet.xml" />
     <Content Include="login.aspx" />
     <Content Include="storaTestet.xml" />
     <Content Include="StyleSheetFragor.css" />
+    <Content Include="StyleSheetIndex.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +80,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexLilla.aspx.cs">
+      <DependentUpon>indexLilla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexLilla.aspx.designer.cs">
+      <DependentUpon>indexLilla.aspx</DependentUpon>
     </Compile>
     <Compile Include="logIn.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
