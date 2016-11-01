@@ -39,6 +39,14 @@
     padding: 5px;
 }
 
+.frågan {
+    width: 100%;
+}
+
+#accordion{
+    background-color: #5B9FB4;
+}
+
 /*.input {
     display: inline-block;
 }*/
