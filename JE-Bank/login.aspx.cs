@@ -26,17 +26,27 @@ namespace JE_Bank
         {
             användare.Användarnamn = "1";
             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
-            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
-            //{
-            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-            //}
+            if (användare.Certifierad == true) //Köra lilla testet
+            {
+                //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)//Kollar ifall anvädaren gjort godkänt test innom ett år
+                //{
+                //    Response.Redirect("~/indexLilla.aspx);
+                //}
 
-            //else
-            //{
-            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
-            //}
+                //else //Ifall användaren har godkänt test
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+                //}
+            }
+
+            if (användare.Certifierad == false)//Köra stora testet
+            {
+                
+            }
+
+            
             
             
         }
@@ -46,34 +56,50 @@ namespace JE_Bank
             användare.Användarnamn = "2";
 
             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
-            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
-            //{
-            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-            //}
+            if (användare.Certifierad == true) //Köra lilla testet
+            {
+                //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)//Kollar ifall anvädaren gjort godkänt test innom ett år
+                //{
+                //    Response.Redirect("~/indexLilla.aspx);
+                //}
 
-            //else
-            //{
-            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
-            //}
+                //else //Ifall användaren har godkänt test
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+                //}
+            }
+
+            if (användare.Certifierad == false)//Köra stora testet
+            {
+
+            }
         }
 
         protected void btnLogIn3_Click(object sender, EventArgs e)
         {
             användare.Användarnamn = "3";
             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
-            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
-            //{
-            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-            //}
+            if (användare.Certifierad == true) //Köra lilla testet
+            {
+                //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)//Kollar ifall anvädaren gjort godkänt test innom ett år
+                //{
+                //    Response.Redirect("~/indexLilla.aspx);
+                //}
 
-            //else
-            //{
-            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
-            //}
+                //else //Ifall användaren har godkänt test
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+                //}
+            }
+
+            if (användare.Certifierad == false)//Köra stora testet
+            {
+
+            }
 
         }
 
@@ -81,17 +107,25 @@ namespace JE_Bank
         {
             användare.Användarnamn = "4";
             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
-            Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-            //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)
-            //{
-            //    Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-            //}
+            if (användare.Certifierad == true) //Köra lilla testet
+            {
+                //if ((användare.Godkänd - DateTime.Now).TotalDays > 365)//Kollar ifall anvädaren gjort godkänt test innom ett år
+                //{
+                //    Response.Redirect("~/indexLilla.aspx);
+                //}
 
-            //else
-            //{
-            //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
-            //}
+                //else //Ifall användaren har godkänt test
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du har redan gjort ditt prov i år');", true);
+                //}
+            }
+
+            if (användare.Certifierad == false)//Köra stora testet
+            {
+
+            }
 
         }
 
