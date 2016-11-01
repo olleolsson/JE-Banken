@@ -32,7 +32,13 @@
             <div class="svarsalternativ" runat="server">42
                 <asp:RadioButton ID="RadioButton4" runat="server" />
             </div>    
-                           
+                  
+            
+            <asp:radioButtonList ID="radio1" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical" OnSelectedIndexChanged="radio1_SelectedIndexChanged">
+            </asp:radioButtonList>  
+                <asp:radioButtonList ID="RadioButtonList1" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical" OnSelectedIndexChanged="radio1_SelectedIndexChanged">
+            </asp:radioButtonList>  
+                   <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </div>
 
             <div class="frågeruta" runat="server">
