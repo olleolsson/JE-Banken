@@ -16,7 +16,6 @@ namespace JE_Bank
         HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
         HtmlInputCheckBox input = new HtmlInputCheckBox();
         public List<Fråga> frågor = new List<Fråga>();
-        //public HtmlInputRadioButton[] radioArr = new HtmlInputRadioButton[150];
         public List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
         public List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
 
