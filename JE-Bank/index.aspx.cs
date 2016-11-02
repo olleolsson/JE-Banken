@@ -22,22 +22,15 @@ namespace JE_Bank
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-
             Users användare = new Users();
             Postgres pg = new Postgres();
             användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
             användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-
             if (användare.Certifierad == true)
             {
-
                 AppendProv(xmlToListLilla());
-
             }
-
 
             if (användare.Certifierad == false)
             {
@@ -54,11 +47,9 @@ namespace JE_Bank
             int räkna = 0;
             int knappid = 0;
 
-
             foreach (Fråga f in frågor)
             {
                 int x = 0;
-
 
                 HtmlGenericControl frågeruta = new HtmlGenericControl("div id=frågeruta");
                 HtmlGenericControl frågenummer = new HtmlGenericControl("div id=frågenummer");
@@ -66,45 +57,31 @@ namespace JE_Bank
                 frågenummer.InnerText = "Fråga " + frågaNr++;
                 frågan.InnerText = f.Frågan;
 
-
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(frågan);
 
-
-
-
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
-
-
                     if (s.RättSvar == "rätt")
                     {
                         x++;
                     }
                 }
 
-
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
                     HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
                     HtmlGenericControl svarText = new HtmlGenericControl("div id=svarstext");
 
-
                     rdbtn = new HtmlInputRadioButton();
                     input = new HtmlInputCheckBox();
-
-
 
                     if (räkna== 4)
 	                {
 		                svarId++;
-                        räkna -= 4;
-                        
-
-	                }
-                    
+                        räkna -= 4;                      
+	                }                    
                     svarText.InnerText = s.Svaren;
-
 
                     if (x >= 2)
                     {
@@ -119,10 +96,8 @@ namespace JE_Bank
                         checkList.Add(input);
                     }
 
-
                     if (x == 1)
                     {
-
                         rdbtn.Value = s.RättSvar;
                         rdbtn.Name = "hej" + svarId;
 
@@ -134,7 +109,6 @@ namespace JE_Bank
 
                         radioList.Add(rdbtn);
                         indexArr++;
-
                     }
                     svar.Controls.Add(svarText);
 
@@ -142,22 +116,18 @@ namespace JE_Bank
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
-
         }
 
         public List<Fråga> xmlToListLilla()
         {
             List<Fråga> Lillatestet = new List<Fråga>();
 
-
             string path = Server.MapPath("lillaTestet.xml");
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
-
             XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
             XmlNodeList allasvar = doc.SelectNodes("/quiz/Frågor/*/fråga/Frågan");
-
 
             foreach (XmlNode node in allafrågor)
             {
@@ -165,12 +135,10 @@ namespace JE_Bank
                 f.Frågan = node["Frågan"].InnerText;
                 Lillatestet.Add(f);
 
-
                 for (int i = 1; i < node.ChildNodes.Count; i++)
                 {
                     Svarsalternativ s = new Svarsalternativ();
                     s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
-
 
                     if (node.ChildNodes[i].Attributes.Count == 0)
                     {
@@ -180,8 +148,6 @@ namespace JE_Bank
                     {
                         s.RättSvar = "rätt";
                     }
-
-
                     f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
                 }
             }
@@ -192,14 +158,11 @@ namespace JE_Bank
         {
             List<Fråga> Storatestet = new List<Fråga>();
 
-
             string path = Server.MapPath("storaTestet.xml");
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
-
             XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
-
 
             foreach (XmlNode node in allafrågor)
             {
@@ -207,12 +170,10 @@ namespace JE_Bank
                 f.Frågan = node["Frågan"].InnerText;
                 Storatestet.Add(f);
 
-
                 for (int i = 1; i < node.ChildNodes.Count; i++)
                 {
                     Svarsalternativ s = new Svarsalternativ();
                     s.Svaren = node.ChildNodes[i].InnerText;
-
 
                     if (node.ChildNodes[i].Attributes.Count == 0)
                     {
@@ -226,30 +187,15 @@ namespace JE_Bank
                 }
             }
             return Storatestet;
-
         }
 
         protected void btnRätta_Click(object sender, EventArgs e)
         {
-
-            //foreach (Fråga f in xmlToListLilla())
-            //{
-            //    foreach (Svarsalternativ s in f.Svarsalternativslista)
-            //    {
-            //        if (s.RättSvar && rdbtn.Value == "True" && rdbtn.Checked)
-            //        {
-            //            antalRätt++;
-            //        }
-            //    }
-            //}
-
             Rätta();
-
         }
 
         public void Rätta()
         {
-
             {
                 int räkna = 0;
 
@@ -258,8 +204,7 @@ namespace JE_Bank
                     if (r.Checked && r.Value=="rätt")
                     {
                         räkna++;
-                    }
-                    
+                    }                   
                 }
 
                 int antal = 0;
@@ -279,12 +224,8 @@ namespace JE_Bank
                         }
                     }
                 }
-
-
                 ptagg.InnerText = räkna.ToString();
             }
-
         }
-
     }
 }
