@@ -34,8 +34,7 @@ namespace JE_Bank
             if (användare.Certifierad == false)
             {
                 AppendProv(xmlToListStora());
-            }
-            
+            }          
         }
 
         public void AppendProv(List<Fråga> frågor)
@@ -53,9 +52,9 @@ namespace JE_Bank
                 HtmlGenericControl frågeruta = new HtmlGenericControl("div id=frågeruta");
                 HtmlGenericControl frågenummer = new HtmlGenericControl("div id=frågenummer");
                 HtmlGenericControl frågan = new HtmlGenericControl("div id=frågan");
+
                 frågenummer.InnerText = "Fråga " + frågaNr++;
                 frågan.InnerText = f.Frågan;
-
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(frågan);
 
@@ -85,12 +84,10 @@ namespace JE_Bank
                     if (x >= 2)
                     {
                         input.Value = s.RättSvar;
-
                         input.Name = "hej" + svarId;
                         input.ID = knappid.ToString();
                         räkna++;
                         knappid++;
-
                         svar.Controls.Add(input);
                         checkList.Add(input);
                     }
@@ -99,18 +96,14 @@ namespace JE_Bank
                     {
                         rdbtn.Value = s.RättSvar;
                         rdbtn.Name = "hej" + svarId;
-
                         rdbtn.ID = knappid.ToString();
                         räkna++;
                         knappid++;
-
                         svar.Controls.Add(rdbtn);
-
                         radioList.Add(rdbtn);
                         indexArr++;
                     }
                     svar.Controls.Add(svarText);
-
                     frågeruta.Controls.Add(svar);
                     allafrågor.Controls.Add(frågeruta);
                 }
@@ -120,7 +113,6 @@ namespace JE_Bank
         public List<Fråga> xmlToListLilla()
         {
             List<Fråga> Lillatestet = new List<Fråga>();
-
             string path = Server.MapPath("lillaTestet.xml");
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
@@ -156,11 +148,9 @@ namespace JE_Bank
         public List<Fråga> xmlToListStora()
         {
             List<Fråga> Storatestet = new List<Fråga>();
-
             string path = Server.MapPath("storaTestet.xml");
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
-
             XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
 
             foreach (XmlNode node in allafrågor)
