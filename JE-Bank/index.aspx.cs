@@ -20,34 +20,37 @@ namespace JE_Bank
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Users användare = new Users();
-                Postgres pg = new Postgres();
-                användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
-                användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+       
+                AppendProv(xmlToListLilla());
+
+                //Users användare = new Users();
+                //Postgres pg = new Postgres();
+                //användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
+                //användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
 
-                if (användare.Certifierad == true)
-                {
+                //if (användare.Certifierad == true)
+                //{
 
 
-                    AppendProv(xmlToListLilla());
-                }
+                    
+                //}
 
 
-                if (användare.Certifierad == false)
-                {
-                    AppendProv(xmlToListStora());
-                }
-            }
+                //if (användare.Certifierad == false)
+                //{
+                //    AppendProv(xmlToListStora());
+                //}
+            
         }
 
         public void AppendProv(List<Fråga> frågor)
         {
             int frågaNr = 1;
-            int svarId = 0;
+            int svarId = 1;
             int indexArr = 0;
+            int räkna = 0;
+            int knappid = 0;
 
 
             foreach (Fråga f in frågor)
@@ -66,7 +69,8 @@ namespace JE_Bank
                 frågeruta.Controls.Add(frågan);
 
 
-                HtmlGenericControl form = new HtmlGenericControl("form");
+                //HtmlGenericControl form = new HtmlGenericControl("form");
+
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
 
@@ -88,11 +92,15 @@ namespace JE_Bank
                     input = new HtmlInputCheckBox();
 
 
-                    svarId++;
 
+                    if (räkna== 4)
+	                {
+		                svarId++;
+                        räkna -= 4;
+                        
 
-
-
+	                }
+                    
                     svarText.InnerText = s.Svaren;
 
 
@@ -107,12 +115,11 @@ namespace JE_Bank
                     {
 
                         rdbtn.Value = s.RättSvar;
-                        rdbtn.ID = svarId.ToString();
+                        rdbtn.Name = "hej" + svarId;
 
-
-
-
-
+                        rdbtn.ID = knappid.ToString();
+                        räkna++;
+                        knappid++;
 
                         svar.Controls.Add(rdbtn);
 
@@ -120,22 +127,15 @@ namespace JE_Bank
                         radioArr[indexArr] = rdbtn;  //Sparar undan varje knapp till array.
                         indexArr++;
 
-
-
-
                     }
                     svar.Controls.Add(svarText);
 
 
-                    form.Controls.Add(svar);
-                    frågeruta.Controls.Add(form);
+                    //form.Controls.Add(svar);
+                    frågeruta.Controls.Add(svar);
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
-
-
-
-
 
         }
 
@@ -166,8 +166,6 @@ namespace JE_Bank
                     s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
 
 
-
-
                     if (node.ChildNodes[i].Attributes.Count == 0)
                     {
                         s.RättSvar = "fel";
@@ -176,8 +174,6 @@ namespace JE_Bank
                     {
                         s.RättSvar = "rätt";
                     }
-
-
 
 
                     f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
@@ -225,8 +221,6 @@ namespace JE_Bank
             }
             return Storatestet;
 
-
-
         }
 
         protected void btnRätta_Click(object sender, EventArgs e)
@@ -258,7 +252,6 @@ namespace JE_Bank
                 {
 
 
-
                     if (radioArr[i].Checked && radioArr[i].Value == "rätt")
                     {
                         räkna++;
@@ -268,8 +261,6 @@ namespace JE_Bank
 
                 ptagg.InnerText = räkna.ToString();
             }
-
-
 
         }
 
