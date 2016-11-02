@@ -8,6 +8,8 @@ namespace JE_Bank
     public class Fråga
     {
         public string Frågan { get; set; }
+        public string Kategori { get; set; }
+
         public List<Svarsalternativ> Svarsalternativslista { get; set; } 
 
         public Fråga()

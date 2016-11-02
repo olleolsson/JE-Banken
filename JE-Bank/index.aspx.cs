@@ -23,20 +23,21 @@ namespace JE_Bank
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            Postgres pg = new Postgres();
-            användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
-            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+            AppendProv(xmlToListLilla());
 
-            if (användare.Certifierad == true)
-            {
-                AppendProv(xmlToListLilla());
-            }
+            //Postgres pg = new Postgres();
+            //användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
+            //användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-            if (användare.Certifierad == false)
-            {
-                AppendProv(xmlToListStora());
-            }          
+            //if (användare.Certifierad == true)
+            //{
+                
+            //}
+
+            //if (användare.Certifierad == false)
+            //{
+            //    AppendProv(xmlToListStora());
+            //}          
         }
 
         public void AppendProv(List<Fråga> frågor)
@@ -55,7 +56,7 @@ namespace JE_Bank
                 HtmlGenericControl frågenummer = new HtmlGenericControl("div id=frågenummer");
                 HtmlGenericControl frågan = new HtmlGenericControl("div id=frågan");
 
-                frågenummer.InnerText = "Fråga " + frågaNr++;
+                frågenummer.InnerText = "Fråga " + frågaNr++ + " Kategori: " + f.Kategori;
                 frågan.InnerText = f.Frågan;
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(frågan);
@@ -121,17 +122,20 @@ namespace JE_Bank
 
             XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
             XmlNodeList allasvar = doc.SelectNodes("/quiz/Frågor/*/fråga/Frågan");
+            XmlNodeList kategorier = doc.SelectNodes("/quiz/Frågor/*");
 
             foreach (XmlNode node in allafrågor)
             {
                 Fråga f = new Fråga();
                 f.Frågan = node["Frågan"].InnerText;
-                Lillatestet.Add(f);
+                
+
 
                 for (int i = 1; i < node.ChildNodes.Count; i++)
                 {
                     Svarsalternativ s = new Svarsalternativ();
                     s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
+
 
                     if (node.ChildNodes[i].Attributes.Count == 0)
                     {
@@ -141,8 +145,16 @@ namespace JE_Bank
                     {
                         s.RättSvar = "rätt";
                     }
+
+
+                    f.Kategori = node["Frågan"].ParentNode.ParentNode.Name;
+
+
                     f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
                 }
+
+                Lillatestet.Add(f);
+
             }
             return Lillatestet;
         }
