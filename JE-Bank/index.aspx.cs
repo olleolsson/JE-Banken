@@ -18,10 +18,12 @@ namespace JE_Bank
         public List<Fråga> frågor = new List<Fråga>();
         public List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
         public List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
+        Postgres pg = new Postgres();
+        Users användare = new Users();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Users användare = new Users();
+            
             Postgres pg = new Postgres();
             användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
             användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
@@ -214,6 +216,15 @@ namespace JE_Bank
                     }
                 }
                 ptagg.InnerText = räkna.ToString();
+
+                if (räkna <=11)
+                {
+                    pg.sättTidGodkänd(användare.Användarnamn);
+                }
+                if (räkna >= 10)
+                {
+                    pg.sättTidGjortTest(användare.Användarnamn);
+                }
             }
         }
     }
