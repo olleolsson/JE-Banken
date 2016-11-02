@@ -16,31 +16,33 @@ namespace JE_Bank
         HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
         HtmlInputCheckBox input = new HtmlInputCheckBox();
         public List<Fråga> frågor = new List<Fråga>();
-        public HtmlInputRadioButton[] radioArr = new HtmlInputRadioButton[150];
+        //public HtmlInputRadioButton[] radioArr = new HtmlInputRadioButton[150];
+        public List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
+        public List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-       
+
+
+
+            Users användare = new Users();
+            Postgres pg = new Postgres();
+            användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+
+
+            if (användare.Certifierad == true)
+            {
+
                 AppendProv(xmlToListLilla());
 
-                //Users användare = new Users();
-                //Postgres pg = new Postgres();
-                //användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
-                //användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+            }
 
 
-                //if (användare.Certifierad == true)
-                //{
-
-
-                    
-                //}
-
-
-                //if (användare.Certifierad == false)
-                //{
-                //    AppendProv(xmlToListStora());
-                //}
+            if (användare.Certifierad == false)
+            {
+                AppendProv(xmlToListStora());
+            }
             
         }
 
@@ -69,7 +71,7 @@ namespace JE_Bank
                 frågeruta.Controls.Add(frågan);
 
 
-                //HtmlGenericControl form = new HtmlGenericControl("form");
+
 
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
@@ -107,7 +109,14 @@ namespace JE_Bank
                     if (x >= 2)
                     {
                         input.Value = s.RättSvar;
+
+                        input.Name = "hej" + svarId;
+                        input.ID = knappid.ToString();
+                        räkna++;
+                        knappid++;
+
                         svar.Controls.Add(input);
+                        checkList.Add(input);
                     }
 
 
@@ -123,15 +132,12 @@ namespace JE_Bank
 
                         svar.Controls.Add(rdbtn);
 
-
-                        radioArr[indexArr] = rdbtn;  //Sparar undan varje knapp till array.
+                        radioList.Add(rdbtn);
                         indexArr++;
 
                     }
                     svar.Controls.Add(svarText);
 
-
-                    //form.Controls.Add(svar);
                     frågeruta.Controls.Add(svar);
                     allafrågor.Controls.Add(frågeruta);
                 }
@@ -247,14 +253,30 @@ namespace JE_Bank
             {
                 int räkna = 0;
 
-
-                for (int i = 0; i < radioArr.Length; i++)
+                foreach (HtmlInputRadioButton r in radioList)
                 {
-
-
-                    if (radioArr[i].Checked && radioArr[i].Value == "rätt")
+                    if (r.Checked && r.Value=="rätt")
                     {
                         räkna++;
+                    }
+                    
+                }
+
+                int antal = 0;
+                foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
+                {
+                    if (c.Checked && c.Value == "rätt")
+                    {
+                        antal++;
+                        if (antal > 1)
+                        {
+                            räkna++;
+                        }
+                        if (antal == 2)
+                        {
+                            antal--;
+                            antal--;
+                        }
                     }
                 }
 
