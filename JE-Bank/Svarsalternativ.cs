@@ -8,6 +8,6 @@ namespace JE_Bank
     public class Svarsalternativ 
     {
         public string Svaren { get; set; }
-        public bool RättSvar { get; set; }
+        public string RättSvar { get; set; }
     }
 }
