@@ -9,13 +9,11 @@ namespace JE_Bank
 {
     public class Postgres
     {
-
         //private NpgsqlConnection conn;
         //private NpgsqlCommand cmd;
         //private NpgsqlDataReader dr;
 
         NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["interaktiva_g26"].ConnectionString);
-
 
         public string TestSqlFråga()
         {
@@ -24,9 +22,7 @@ namespace JE_Bank
             string fråga = "SELECT användarnamn FROM användare";
 
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
-
             NpgsqlDataReader reader = cmd.ExecuteReader();
-
             Users nyAnvändare = new Users();
 
             while (reader.Read())
@@ -35,7 +31,6 @@ namespace JE_Bank
                     Användarnamn = reader["användarnamn"].ToString()
                 };
                 reader.Close();
-
                 conn.Close();               
             return nyAnvändare.Användarnamn;
         }
@@ -46,13 +41,10 @@ namespace JE_Bank
 
             string fråga = "SELECT certifierad FROM användare WHERE användarnamn = @anvandare";
             
-
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
             cmd.Parameters.AddWithValue("anvandare", anvandare);
 
-
             NpgsqlDataReader reader = cmd.ExecuteReader();
-
             Users nyAnvändare = new Users();
 
             while (reader.Read())
@@ -63,7 +55,6 @@ namespace JE_Bank
                 };
             }
             reader.Close();
-
             conn.Close();
             return nyAnvändare.Certifierad.ToString();
         }
@@ -76,7 +67,6 @@ namespace JE_Bank
 
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
             cmd.Parameters.AddWithValue("anvandare", anvandare);
-
             conn.Close();
         }
 
@@ -85,23 +75,18 @@ namespace JE_Bank
             conn.Open();
 
             string fråga = "UPDATE resultat SET datum_utförd = CURRENT_TIMESTAMP WHERE användare = @anvandare";
-
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
             cmd.Parameters.AddWithValue("anvandare", anvandare);
-
             conn.Close();
         }
 
         public DateTime hämtaDatumGodkänd(string anvandare)
         {
             conn.Open();
-
             string fråga = "SELECT godkänd FROM resultat WHERE godkänd < current_timestamp AND användare = @anvandare";
-
 
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
             cmd.Parameters.AddWithValue("anvandare", anvandare);
-
 
             NpgsqlDataReader reader = cmd.ExecuteReader();
 
@@ -115,7 +100,6 @@ namespace JE_Bank
                 };
             }
             reader.Close();
-
             conn.Close();
             return nyAnvändare.Godkänd;
         }
@@ -126,28 +110,21 @@ namespace JE_Bank
 
             string fråga = "SELECT datum_utförd FROM resultat WHERE användare = @anvandare";
 
-
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
             cmd.Parameters.AddWithValue("anvandare", anvandare);
-
 
             NpgsqlDataReader reader = cmd.ExecuteReader();
 
             Users nyAnvändare = new Users();
 
             while (reader.Read())
-            {
-                
+            {               
                     nyAnvändare = new Users()
                     {
                         Utförd = Convert.ToDateTime(reader["datum_utförd"])
-                    };
-                
-                
-
+                    };                               
             }
             reader.Close();
-
             conn.Close();
             return nyAnvändare.Utförd;
         }

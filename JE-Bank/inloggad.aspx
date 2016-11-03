@@ -9,7 +9,6 @@
 <body>
     <form id="form1" runat="server">
     <div>
-
         <asp:Button ID="btnStartaTest" runat="server" Text="Starta Test" OnClick="btnStartaTest_Click" />
         <asp:Button ID="btnHistorik" runat="server" Text="Se historik" OnClick="btnHistorik_Click" />
         <asp:Label ID="lblDatum" runat="server" Text="Label"></asp:Label>

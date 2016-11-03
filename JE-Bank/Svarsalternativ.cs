@@ -9,7 +9,5 @@ namespace JE_Bank
     {
         public string Svaren { get; set; }
         public string RättSvar { get; set; }
-
-
     }
 }

@@ -12,7 +12,6 @@ namespace JE_Bank
     public partial class logIn : System.Web.UI.Page
     {
         public string pAdmin = "admin";
-
         Users användare = new Users();
         Postgres pg = new Postgres();
         index i = new index();
@@ -51,6 +50,5 @@ namespace JE_Bank
             användare.Användarnamn = "admin";
             Response.Redirect("~/index.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
         }
-
     }
 }
