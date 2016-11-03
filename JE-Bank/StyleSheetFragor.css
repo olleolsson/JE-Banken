@@ -2,10 +2,15 @@
     background-color: #D5E2EB;
 }
 
+
 #ContentPlaceHolder1_allafrågor {
     margin: auto;
     width: 800px;
+    
 }
+
+
+
 
 #frågeruta {
     width: 100%;
@@ -14,21 +19,28 @@
     margin: 3%;
 }
 
+
 #svarsalternativ {
     background-color: #5B9FB4;
     margin: 1%;
     width: 30%;
     display: block;
     border: solid black 1px;
+
+
 }
 
+
 #svarstext {
-    display: inline-block;   
+    display: inline-block;
+    
 }
+
 
 #frågan{
     margin: 2% 1%;
 }
+
 
 #frågenummer{
     background-color: #0285A1;
@@ -38,9 +50,11 @@
     width: 50%;
 }
 
+
 #rubrik{
     margin-left: 1%;
 }
+
 
 #kategori{
     background-color: #0285A1;
@@ -49,14 +63,46 @@
     font-family: Calibri;
     font-size: 22px;
     text-align: right;
+
+
 }
+
 
 #bild{
     display: block;
     width: 98%;
-    margin: 1%; 
+    margin: 1%;
+   
 }
+
 
 #txtkat{
     margin-right: 1%;
 }
+
+@media screen and (max-width: 860px) {
+
+    #ContentPlaceHolder1_allafrågor {
+        width: 100%;
+        margin-left: 0%;
+        padding-left: 0%;
+    }
+
+    #txtkat{
+    margin-right: 10%;
+}
+
+
+}
+
+    @media screen and (max-width: 480px) {
+
+    #ContentPlaceHolder1_allafrågor {
+        width: 480px;
+    }
+
+        #txtkat{
+    margin-right: 10%;
+}
+}
+
