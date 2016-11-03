@@ -22,9 +22,10 @@ namespace JE_Bank
         Postgres pg = new Postgres();
         Users användare = new Users();
         string sökvägXML;
+        Fråga k = new Fråga();
 
         protected void Page_Load(object sender, EventArgs e)
-        {      
+        {
             btnFacit.Visible = false;
             Postgres pg = new Postgres();
             användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
@@ -40,7 +41,7 @@ namespace JE_Bank
             {
                 sökvägXML = "storaTestet.xml";
                 AppendProv(xmlToList(sökvägXML));
-            }           
+            }
         }
 
         public void AppendProv(List<Fråga> frågor)
@@ -67,6 +68,7 @@ namespace JE_Bank
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(kategori);
                 frågeruta.Controls.Add(frågan);
+                
 
                 HtmlGenericControl bild = new HtmlGenericControl("img id=bild src=" + f.Bild);
 
@@ -97,7 +99,7 @@ namespace JE_Bank
                     {
                         input.Value = s.RättSvar;
                         input.Name = "hej" + svarId;
-                        input.ID = knappid.ToString();
+                        input.ID = f.Kategori+ knappid.ToString();
                         räkna++;
                         knappid++;
                         svar.Controls.Add(input);
@@ -106,7 +108,7 @@ namespace JE_Bank
                         if (s.RättSvar == "rätt")
                         {
                             facit.Add(s.Svaren, f.Frågan);
-                    }
+                        }
 
                     }
 
@@ -114,7 +116,7 @@ namespace JE_Bank
                     {
                         rdbtn.Value = s.RättSvar;
                         rdbtn.Name = "hej" + svarId;
-                        rdbtn.ID = knappid.ToString();
+                        rdbtn.ID = f.Kategori + knappid.ToString();
                         räkna++;
                         knappid++;
                         svar.Controls.Add(rdbtn);
@@ -122,11 +124,10 @@ namespace JE_Bank
                         indexArr++;
 
                         if (s.RättSvar == "rätt")
-
-	                    {
+                        {
                             facit.Add(s.Svaren, f.Frågan);
-	                    }
-                                            
+                        }
+
                     }
                     svar.Controls.Add(svarText);
                     frågeruta.Controls.Add(svar);
@@ -136,7 +137,7 @@ namespace JE_Bank
                     {
                         frågeruta.Controls.Add(bild);
                     }
-                   
+
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
@@ -156,7 +157,7 @@ namespace JE_Bank
                 Fråga f = new Fråga();
                 f.Frågan = node["Frågan"].InnerText;
                 f.Kategori = node.ParentNode.Name;
-                
+
                 XmlNode parent = node.ParentNode;
                 XmlNode attribute = node.Attributes["test"];
 
@@ -199,163 +200,124 @@ namespace JE_Bank
 
         public void Rätta()
         {
+            Fråga k = new Fråga();
+            int antalrätt = 0;
+            int antalValdaSvarsalternativ = 0;
+            int antalfrågor = 0;
+            int antalrättetik = 0;
+            int antalrättekonomi = 0;
+            int antalrättprodukter = 0;
+            int antalfrågoretik = 0;
+            int antalfrågorekonomi = 0;
+            int antalfrågorprodukter = 0;
+
+            foreach (Fråga f in xmlToList(sökvägXML))//räknar antalet frågor för att vi ska kunna veta hur mkt 70% är när vi rättar.
             {
-                Fråga k = new Fråga();
-                int antalrätt = 0;
-                int antalValdaSvarsalternativ = 0;
-                int antalfrågor = 0;
-                int antalrättetik = 0;
-                int antalrättekonomi = 0;
-                int antalrättprodukter = 0;
-                int antalfrågoretik = 0;
-                int antalfrågorekonomi = 0;
-                int antalfrågorprodukter = 0;               
+                antalfrågor++;
+            }
 
-                foreach (Fråga f in xmlToList(sökvägXML))//räknar antalet frågor för att vi ska kunna veta hur mkt 70% är när vi rättar.
+            foreach (Fråga f in xmlToList(sökvägXML))
+            {
+                if (f.Kategori =="Etik")
                 {
-                    antalfrågor++;
+                    antalfrågoretik++;
                 }
-
-                foreach (Fråga f in xmlToList(sökvägXML))
+                if (f.Kategori == "Ekonomi")
                 {
-                    if (f.Kategori =="Etik")
-                    {
-                        antalfrågoretik++;
-                        foreach (HtmlInputRadioButton r in radioList)
-                        {
-
-                            if (r.Checked && r.Value == "rätt")
-                            {
-                                antalrätt++;
-                                antalrättetik++;
-                            }
-
-                            r.Disabled = true;
-                        }
-
-                        foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
-                        {
-                            if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
-                            {
-                                if (c.Value == "rätt")
-                                {
-                                    antalValdaSvarsalternativ++;
-                                }
-
-                                if (c.Value == "fel")
-                                {
-                                    antalValdaSvarsalternativ--;
-                                }
-                            }
-
-                            if (antalValdaSvarsalternativ == 2)
-                            {
-                                antalrätt++;
-                                antalrättetik++;
-                            }
-                            c.Disabled = true;
-                        }
-                        break;
-                    }
-
-                    if (f.Kategori =="Ekonomi")
-                    {
-                        antalfrågorekonomi++;
-                        foreach (HtmlInputRadioButton r in radioList)
-                        {
-
-                            if (r.Checked && r.Value == "rätt")
-                            {
-                                antalrätt++;
-                                antalrättekonomi++;
-                            }
-
-                            r.Disabled = true;
-                        }
-
-                        foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
-                        {
-                            if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
-                            {
-                                if (c.Value == "rätt")
-                                {
-                                    antalValdaSvarsalternativ++;
-                                }
-
-                                if (c.Value == "fel")
-                                {
-                                    antalValdaSvarsalternativ--;
-                                }
-                            }
-
-                            if (antalValdaSvarsalternativ == 2)
-                            {
-                                antalrätt++;
-                                antalrättekonomi++;
-                            }
-                            c.Disabled = true;
-                        }
-                        break;
-                    }
-
-                    if (f.Kategori == "Produkter")
-                    {
-                        antalfrågorprodukter++;
-                        foreach (HtmlInputRadioButton r in radioList)
-                        {
-
-                            if (r.Checked && r.Value == "rätt")
-                            {
-                                antalrätt++;
-                                antalrättprodukter++;
-                            }
-
-                            r.Disabled = true;
-                        }
-
-                        foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
-                        {
-                            if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
-                            {
-                                if (c.Value == "rätt")
-                                {
-                                    antalValdaSvarsalternativ++;
-                                }
-
-                                if (c.Value == "fel")
-                                {
-                                    antalValdaSvarsalternativ--;
-                                }
-                            }
-
-                            if (antalValdaSvarsalternativ == 2)
-                            {
-                                antalrätt++;
-                                antalrättprodukter++;
-                            }
-                            c.Disabled = true;
-                            
-                        }
-                        break;
-                    }
+                    antalfrågorekonomi++;
                 }
-
-                ptagg.InnerText = antalrätt.ToString();
-
-
-                if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
+                if (f.Kategori == "Produkter")
                 {
-                    //pg.sättTidGodkänd(användare.Användarnamn);
-                    //pg.sättTidGjortTest(användare.Användarnamn);
-                }
-                if (antalrätt < (antalfrågor * 0.7) || antalrättetik < (antalfrågoretik * 0.6) || antalrättekonomi < (antalfrågorekonomi * 0.6) || antalrättprodukter < (antalfrågorprodukter * 0.6))
-                {
-                    //pg.sättTidGjortTest(användare.Användarnamn);
+                    antalfrågorprodukter++;
                 }
             }
+
+                foreach (HtmlInputRadioButton r in radioList)
+                {
+
+                    if (r.Checked && r.Value == "rätt")
+                    {
+
+                        antalrätt++;
+
+                            if (r.ID.Contains("Etik"))
+                            {
+                                antalrättetik++;
+                            }
+
+                            if (r.ID.Contains("Ekonomi"))
+                            {
+                                antalrättekonomi++;
+                            }
+
+                            if (r.ID.Contains("Produkter"))
+                            {
+                                antalrättprodukter++;
+                            }
+                    }
+
+                    r.Disabled = true;
                 }
-        
-        protected void btnFacit_Click(object sender, EventArgs e)       
+
+                foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
+                {
+                    if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
+                    {
+                        if (c.Value == "rätt")
+                        {
+                            antalValdaSvarsalternativ++;
+                        }
+
+                        if (c.Value == "fel")
+                        {
+                            antalValdaSvarsalternativ--;
+                        }
+                    }
+
+                    if (antalValdaSvarsalternativ == 2)
+                    {
+                        
+
+                        antalrätt++;
+
+                            if (c.ID.Contains("Etik"))
+                            {
+                                antalrättetik++;
+                            }
+                            if (c.ID.Contains("Ekonomi"))
+                            {
+                                antalrättekonomi++;
+                            }
+
+                            if (c.ID.Contains("Produkter"))
+                            {
+                                antalrättprodukter++;
+                            }
+                        
+                    }
+                    c.Disabled = true;
+
+                }
+
+
+
+
+
+            if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
+            {
+                //pg.sättTidGodkänd(användare.Användarnamn);
+                //pg.sättTidGjortTest(användare.Användarnamn);
+            }
+            if (antalrätt < (antalfrågor * 0.7) || antalrättetik < (antalfrågoretik * 0.6) || antalrättekonomi < (antalfrågorekonomi * 0.6) || antalrättprodukter < (antalfrågorprodukter * 0.6))
+            {
+                //pg.sättTidGjortTest(användare.Användarnamn);
+            }
+        }
+
+
+
+
+        protected void btnFacit_Click(object sender, EventArgs e)
         {
             //Response.Redirect("~/facit.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
 
@@ -373,3 +335,4 @@ namespace JE_Bank
         }
     }
 }
+
