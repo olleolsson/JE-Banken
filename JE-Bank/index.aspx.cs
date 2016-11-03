@@ -23,21 +23,25 @@ namespace JE_Bank
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AppendProv(xmlToListLilla());
 
-            //Postgres pg = new Postgres();
-            //användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
-            //användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+            
+            Postgres pg = new Postgres();
+            användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
 
-            //if (användare.Certifierad == true)
-            //{
-                
-            //}
+            if (användare.Certifierad == true)
+            {
+                string sökvägXML = "lillaTestet.xml";
+                AppendProv(xmlToList(sökvägXML));
+            }
 
-            //if (användare.Certifierad == false)
-            //{
-            //    AppendProv(xmlToListStora());
-            //}          
+            if (användare.Certifierad == false)
+            {
+                string sökvägXML = "storaTestet.xml";
+                AppendProv(xmlToList(sökvägXML));
+            }
+
+            
         }
 
         public void AppendProv(List<Fråga> frågor)
@@ -147,10 +151,10 @@ namespace JE_Bank
 
         }
 
-        public List<Fråga> xmlToListLilla()
+        public List<Fråga> xmlToList(string sökvägXML)
         {
-            List<Fråga> Lillatestet = new List<Fråga>();
-            string path = Server.MapPath("lillaTestet.xml");
+            List<Fråga> Testet = new List<Fråga>();
+            string path = Server.MapPath(sökvägXML);
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
@@ -263,46 +267,14 @@ namespace JE_Bank
                 //}
 
 
-                Lillatestet.Add(f);
+                Testet.Add(f);
 
 
             }
-            return Lillatestet;
+            return Testet;
 
         }
 
-        public List<Fråga> xmlToListStora()
-        {
-            List<Fråga> Storatestet = new List<Fråga>();
-            string path = Server.MapPath("storaTestet.xml");
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
-            XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
-
-            foreach (XmlNode node in allafrågor)
-            {
-                Fråga f = new Fråga();
-                f.Frågan = node["Frågan"].InnerText;
-                Storatestet.Add(f);
-
-                for (int i = 1; i < node.ChildNodes.Count; i++)
-                {
-                    Svarsalternativ s = new Svarsalternativ();
-                    s.Svaren = node.ChildNodes[i].InnerText;
-
-                    if (node.ChildNodes[i].Attributes.Count == 0)
-                    {
-                        s.RättSvar = "fel";
-                    }
-                    else if (node.ChildNodes[i].Attributes.Count >= 1)
-                    {
-                        s.RättSvar = "rätt";
-                    }
-                    f.Svarsalternativslista.Add(s);
-                }
-            }
-            return Storatestet;
-        }
 
         protected void btnRätta_Click(object sender, EventArgs e)
         {
