@@ -189,13 +189,6 @@
         <svar rätt="y">Victor Olsson</svar>
         <svar fel="">Nathalie Olsson</svar>
       </fråga>
-      <fråga>
-        <Frågan>Klassiska telefonnummer, vilket nummer var föregångare till 112?</Frågan>
-        <svar rätt="y">90 000</svar>
-        <svar fel="">111</svar>
-        <svar fel="">113</svar>
-        <svar fel="">80 000</svar>
-      </fråga>
     </Etik>
   </Frågor>
 </quiz>
