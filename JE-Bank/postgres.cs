@@ -72,7 +72,7 @@ namespace JE_Bank
         {
             conn.Open();
 
-            string fråga = "UPDATE resultat SET godkänd = CURRENT_TIMESTAMP WHERE användare = @anvandare";
+            string fråga = "UPDATE resultat SET godkänd = CURRENT_TIMESTAMP, datum_utförd = null WHERE användare = @anvandare";
 
             NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
             cmd.Parameters.AddWithValue("anvandare", anvandare);
@@ -118,6 +118,38 @@ namespace JE_Bank
 
             conn.Close();
             return nyAnvändare.Godkänd;
+        }
+
+        public DateTime hämtaDatumGjortTest(string anvandare)
+        {
+            conn.Open();
+
+            string fråga = "SELECT datum_utförd FROM resultat WHERE användare = @anvandare";
+
+
+            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
+            cmd.Parameters.AddWithValue("anvandare", anvandare);
+
+
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+
+            Users nyAnvändare = new Users();
+
+            while (reader.Read())
+            {
+                
+                    nyAnvändare = new Users()
+                    {
+                        Utförd = Convert.ToDateTime(reader["datum_utförd"])
+                    };
+                
+                
+
+            }
+            reader.Close();
+
+            conn.Close();
+            return nyAnvändare.Utförd;
         }
     }
 }
