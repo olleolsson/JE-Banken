@@ -18,11 +18,12 @@ namespace JE_Bank
         public List<Fråga> frågor = new List<Fråga>();
         public List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
         public List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
+        Dictionary<string, string> facit = new Dictionary<string, string>();
         Postgres pg = new Postgres();
         Users användare = new Users();
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {      
             btnFacit.Visible = false;
             Postgres pg = new Postgres();
             användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
@@ -100,6 +101,12 @@ namespace JE_Bank
                         knappid++;
                         svar.Controls.Add(input);
                         checkList.Add(input);
+
+                        if (s.RättSvar == "rätt")
+                        {
+                            facit.Add(s.Svaren, f.Frågan);
+                    }
+
                     }
 
                     if (x == 1)
@@ -112,15 +119,25 @@ namespace JE_Bank
                         svar.Controls.Add(rdbtn);
                         radioList.Add(rdbtn);
                         indexArr++;
+
+                        if (s.RättSvar == "rätt")
+
+	                    {
+                            facit.Add(s.Svaren, f.Frågan);
+	                    }
+                                            
                     }
                     svar.Controls.Add(svarText);
                     frågeruta.Controls.Add(svar);
+
 
                     if (f.Bild != null)
                     {
                         frågeruta.Controls.Add(bild);
                     }
                    
+
+                    ptagg.InnerText = facit.ToString();
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
@@ -192,7 +209,7 @@ namespace JE_Bank
                     if (r.Checked && r.Value=="rätt")
                     {
                         räkna++;
-                    }
+                    }                   
 
                     r.Disabled = true;
                 }
@@ -227,10 +244,10 @@ namespace JE_Bank
                 //    pg.sättTidGjortTest(användare.Användarnamn);
                 //}
             }
-        }
+                }
 
         protected void btnFacit_Click(object sender, EventArgs e)
-        {
+                {
 
         }
     }
