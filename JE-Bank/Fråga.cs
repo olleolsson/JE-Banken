@@ -10,7 +10,6 @@ namespace JE_Bank
         public string Frågan { get; set; }
         public string Kategori { get; set; }
         public string Bild { get; set; }
-
         public List<Svarsalternativ> Svarsalternativslista { get; set; } 
 
         public Fråga()
@@ -18,6 +17,4 @@ namespace JE_Bank
             Svarsalternativslista = new List<Svarsalternativ>();
         }
     }
-
-
 }
