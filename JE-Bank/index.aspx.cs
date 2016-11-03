@@ -209,20 +209,7 @@ namespace JE_Bank
                 int antalrättprodukter = 0;
                 int antalfrågoretik = 0;
                 int antalfrågorekonomi = 0;
-                int antalfrågorprodukter = 0;
-
-                //foreach (HtmlInputRadioButton r in radioList)
-                //{
-                    
-                //    if (r.Checked && r.Value=="rätt")
-                //    {
-                //        antalrätt++;
-                //    }                   
-
-                //    r.Disabled = true;
-                //}
-
-                
+                int antalfrågorprodukter = 0;               
 
                 foreach (Fråga f in xmlToList(sökvägXML))//räknar antalet frågor för att vi ska kunna veta hur mkt 70% är när vi rättar.
                 {
@@ -268,6 +255,7 @@ namespace JE_Bank
                             }
                             c.Disabled = true;
                         }
+                        break;
                     }
 
                     if (f.Kategori =="Ekonomi")
@@ -307,6 +295,7 @@ namespace JE_Bank
                             }
                             c.Disabled = true;
                         }
+                        break;
                     }
 
                     if (f.Kategori == "Produkter")
@@ -345,43 +334,24 @@ namespace JE_Bank
                                 antalrättprodukter++;
                             }
                             c.Disabled = true;
+                            
                         }
+                        break;
                     }
                 }
 
-                //foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
-                //{
-                //    if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
-                //    {
-                //        if (c.Value == "rätt")
-                //        {
-                //            antalValdaSvarsalternativ++;
-                //        }
-
-                //        if (c.Value == "fel")
-                //        {
-                //            antalValdaSvarsalternativ--;
-                //        }
-                //    }
-
-                //    if (antalValdaSvarsalternativ == 2)
-                //    {
-                //        antalrätt++;
-                //    }
-                //    c.Disabled = true;
-                //}
                 ptagg.InnerText = antalrätt.ToString();
 
 
-                //if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
-                //{
-                //    pg.sättTidGodkänd(användare.Användarnamn);
-                //    pg.sättTidGjortTest(användare.Användarnamn);
-                //}
-                //if (antalrätt < (antalfrågor * 0.7) || antalrättetik < (antalfrågoretik * 0.6) || antalrättekonomi < (antalfrågorekonomi * 0.6) || antalrättprodukter < (antalfrågorprodukter * 0.6))
-                //{
-                //    pg.sättTidGjortTest(användare.Användarnamn);
-                //}
+                if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
+                {
+                    //pg.sättTidGodkänd(användare.Användarnamn);
+                    //pg.sättTidGjortTest(användare.Användarnamn);
+                }
+                if (antalrätt < (antalfrågor * 0.7) || antalrättetik < (antalfrågoretik * 0.6) || antalrättekonomi < (antalfrågorekonomi * 0.6) || antalrättprodukter < (antalfrågorprodukter * 0.6))
+                {
+                    //pg.sättTidGjortTest(användare.Användarnamn);
+                }
             }
                 }
         
