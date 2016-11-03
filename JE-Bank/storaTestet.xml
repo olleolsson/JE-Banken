@@ -4,7 +4,7 @@
   <Frågor>
     <Produkter>
       <fråga>
-        <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
+        <Frågan bild="/bilder/rymd.jpg">Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
         <svar rätt="y">2009</svar>
         <svar fel="">2008</svar>
         <svar rätt="y">2007</svar>
@@ -34,7 +34,7 @@
         <svar fel="">-10°C</svar>
       </fråga>
       <fråga>
-        <Frågan>Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>
+        <Frågan bild="/bilder/bro.jpg">Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>
         <svar rätt="y">Florens</svar>
         <svar rätt="y">Verona</svar>
         <svar fel="">Rom</svar>
