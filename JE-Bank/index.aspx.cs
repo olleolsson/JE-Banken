@@ -133,8 +133,12 @@ namespace JE_Bank
                     }
                     svar.Controls.Add(svarText);
                     frågeruta.Controls.Add(svar);
-                    f.Bild = f.Bild;
-                    frågeruta.Controls.Add(bild);
+
+                    if (f.Bild != null)
+                    {
+                        frågeruta.Controls.Add(bild);
+                    }
+                    
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
