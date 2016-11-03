@@ -65,7 +65,6 @@
     <Content Include="bilder\rymd.jpg" />
     <Content Include="dlls\Mono.Security.dll" />
     <Content Include="dlls\Npgsql.dll" />
-    <Content Include="Facit.aspx" />
     <Content Include="index.aspx" />
     <Content Include="inloggad.aspx" />
     <Content Include="lillaTestet.xml" />
@@ -75,13 +74,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facit.aspx.cs">
-      <DependentUpon>Facit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Facit.aspx.designer.cs">
-      <DependentUpon>Facit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Fråga.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

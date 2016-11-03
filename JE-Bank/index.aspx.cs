@@ -15,10 +15,10 @@ namespace JE_Bank
     {
         HtmlInputRadioButton rdbtn = new HtmlInputRadioButton();
         HtmlInputCheckBox input = new HtmlInputCheckBox();
-        public List<Fråga> frågor = new List<Fråga>();
-        public List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
-        public List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
-        public Dictionary<string, string> facit = new Dictionary<string, string>();
+        List<Fråga> frågor = new List<Fråga>();
+        List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
+        List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
+        Dictionary<string, string> facit = new Dictionary<string, string>();
         Postgres pg = new Postgres();
         Users användare = new Users();
         string sökvägXML;
@@ -67,8 +67,7 @@ namespace JE_Bank
 
                 frågeruta.Controls.Add(frågenummer);
                 frågeruta.Controls.Add(kategori);
-                frågeruta.Controls.Add(frågan);
-                
+                frågeruta.Controls.Add(frågan);                
 
                 HtmlGenericControl bild = new HtmlGenericControl("img id=bild src=" + f.Bild);
 
@@ -109,7 +108,6 @@ namespace JE_Bank
                         {
                             facit.Add(s.Svaren, f.Frågan);
                         }
-
                     }
 
                     if (x == 1)
@@ -127,17 +125,14 @@ namespace JE_Bank
                         {
                             facit.Add(s.Svaren, f.Frågan);
                         }
-
                     }
                     svar.Controls.Add(svarText);
                     frågeruta.Controls.Add(svar);
-
 
                     if (f.Bild != null)
                     {
                         frågeruta.Controls.Add(bild);
                     }
-
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
@@ -182,9 +177,7 @@ namespace JE_Bank
                     }
                     catch (Exception)
                     {
-
                     }
-
                     f.Svarsalternativslista.Add(s);
                 }
                 Testet.Add(f);
@@ -234,10 +227,8 @@ namespace JE_Bank
 
                 foreach (HtmlInputRadioButton r in radioList)
                 {
-
                     if (r.Checked && r.Value == "rätt")
                     {
-
                         antalrätt++;
 
                             if (r.ID.Contains("Etik"))
@@ -255,7 +246,6 @@ namespace JE_Bank
                                 antalrättprodukter++;
                             }
                     }
-
                     r.Disabled = true;
                 }
 
@@ -275,9 +265,7 @@ namespace JE_Bank
                     }
 
                     if (antalValdaSvarsalternativ == 2)
-                    {
-                        
-
+                    {                        
                         antalrätt++;
 
                             if (c.ID.Contains("Etik"))
@@ -292,45 +280,31 @@ namespace JE_Bank
                             if (c.ID.Contains("Produkter"))
                             {
                                 antalrättprodukter++;
-                            }
-                        
+                            }                      
                     }
                     c.Disabled = true;
-
                 }
 
-
-
-
-
-            if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
+                if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
             {
-                //pg.sättTidGodkänd(användare.Användarnamn);
-                //pg.sättTidGjortTest(användare.Användarnamn);
+                pg.sättTidGodkänd(användare.Användarnamn);
+                pg.sättTidGjortTest(användare.Användarnamn);
             }
             if (antalrätt < (antalfrågor * 0.7) || antalrättetik < (antalfrågoretik * 0.6) || antalrättekonomi < (antalfrågorekonomi * 0.6) || antalrättprodukter < (antalfrågorprodukter * 0.6))
             {
-                //pg.sättTidGjortTest(användare.Användarnamn);
+                pg.sättTidGjortTest(användare.Användarnamn);
             }
         }
 
-
-
-
         protected void btnFacit_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("~/facit.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
-
             HtmlGenericControl diven = new HtmlGenericControl("div");
-
 
             foreach (KeyValuePair<string, string> entry in facit)
             {
                 diven = new HtmlGenericControl("div");
                 diven.InnerText = entry.Value + " " + entry.Key;
                 ptagg.Controls.Add(diven);
-
-
             }
         }
     }
