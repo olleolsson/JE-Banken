@@ -215,7 +215,7 @@ namespace JE_Bank
                 }
 
                 int antal = 0;
-                int antal2 = 0;
+
                 foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
                 {
                     if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ
@@ -249,10 +249,10 @@ namespace JE_Bank
                 //}
             }
                 }
-
-        protected void btnFacit_Click(object sender, EventArgs e)
-                {
-
+        
+        protected void btnFacit_Click(object sender, EventArgs e)       
+        {
+            Response.Redirect("~/facit.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
         }
     }
 }
