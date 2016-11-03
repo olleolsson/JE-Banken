@@ -48,20 +48,40 @@ namespace JE_Bank
             int räkna = 0;
             int knappid = 0;
 
+
             foreach (Fråga f in frågor)
             {
                 int x = 0;
 
+
                 HtmlGenericControl frågeruta = new HtmlGenericControl("div id=frågeruta");
                 HtmlGenericControl frågenummer = new HtmlGenericControl("div id=frågenummer");
                 HtmlGenericControl frågan = new HtmlGenericControl("div id=frågan");
+                HtmlGenericControl kategori = new HtmlGenericControl("div id=kategori");
 
-                frågenummer.InnerText = "Fråga " + frågaNr++ + " Kategori: " + f.Kategori;
+
+                frågenummer.InnerHtml = "<p id=rubrik> Fråga " + frågaNr++ + "</p>";
                 frågan.InnerText = f.Frågan;
+                kategori.InnerHtml = "<p id=txtkat> Kategori: " + f.Kategori + "</p>";
+
+
+                //<p id=rubrik> Fråga " + frågaNr++ +"</p>
+                //<p id=txtkat> Kategori: " + f.Kategori + "</p>
+
+
                 frågeruta.Controls.Add(frågenummer);
+                frågeruta.Controls.Add(kategori);
                 frågeruta.Controls.Add(frågan);
 
-                foreach (Svarsalternativ s in f.Svarsalternativslista)
+
+
+
+                HtmlGenericControl bild = new HtmlGenericControl("img id=bild src=" + f.Bild);
+
+
+
+
+                foreach (Svarsalternativ s in f.Svarsalternativslista) //Räknar antalet rätta svar i en fråga.
                 {
                     if (s.RättSvar == "rätt")
                     {
@@ -69,20 +89,24 @@ namespace JE_Bank
                     }
                 }
 
+
                 foreach (Svarsalternativ s in f.Svarsalternativslista)
                 {
                     HtmlGenericControl svar = new HtmlGenericControl("div id=svarsalternativ");
                     HtmlGenericControl svarText = new HtmlGenericControl("div id=svarstext");
 
+
                     rdbtn = new HtmlInputRadioButton();
                     input = new HtmlInputCheckBox();
 
-                    if (räkna== 4)
-	                {
-		                svarId++;
-                        räkna -= 4;                      
-	                }                    
+
+                    if (räkna == 4)
+                    {
+                        svarId++;
+                        räkna -= 4;
+                    }
                     svarText.InnerText = s.Svaren;
+
 
                     if (x >= 2)
                     {
@@ -94,6 +118,7 @@ namespace JE_Bank
                         svar.Controls.Add(input);
                         checkList.Add(input);
                     }
+
 
                     if (x == 1)
                     {
@@ -108,9 +133,14 @@ namespace JE_Bank
                     }
                     svar.Controls.Add(svarText);
                     frågeruta.Controls.Add(svar);
+                    f.Bild = f.Bild;
+                    frågeruta.Controls.Add(bild);
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
+
+
+
         }
 
         public List<Fråga> xmlToListLilla()
@@ -120,43 +150,121 @@ namespace JE_Bank
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
+
             XmlNodeList allafrågor = doc.SelectNodes("/quiz/Frågor/*/fråga");
-            XmlNodeList allasvar = doc.SelectNodes("/quiz/Frågor/*/fråga/Frågan");
-            XmlNodeList kategorier = doc.SelectNodes("/quiz/Frågor/*");
+
 
             foreach (XmlNode node in allafrågor)
             {
+
+
+
                 Fråga f = new Fråga();
                 f.Frågan = node["Frågan"].InnerText;
-                
+                f.Kategori = node.ParentNode.Name;
+
+
+                int test = 0;
+
+
+                XmlNode parent = node.ParentNode;
+                XmlNode attribute = node.Attributes["test"];
+
+
+                //if (node.Attributes != null && node.Attributes["rätt"] != null)
+                //{
+                //    test++;
+                //}
+
+
+
+
 
 
                 for (int i = 1; i < node.ChildNodes.Count; i++)
                 {
                     Svarsalternativ s = new Svarsalternativ();
-                    s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
+                    s.Svaren = node.ChildNodes[i].InnerText;
 
 
-                    if (node.ChildNodes[i].Attributes.Count == 0)
+                    if (node.ChildNodes[i].Attributes["rätt"] != null)
                     {
-                        s.RättSvar = "fel";
-                    }
-                    else if (node.ChildNodes[i].Attributes.Count >= 1)
-                    {
+
                         s.RättSvar = "rätt";
+
+
+                    }
+                    else if (node.ChildNodes[i].Attributes["fel"] != null)
+                    {
+
+                        s.RättSvar = "fel";
+
                     }
 
 
-                    f.Kategori = node["Frågan"].ParentNode.ParentNode.Name;
+                    try
+                    {
+                        f.Bild = node.FirstChild.Attributes["bild"].Value;
+                    }
+                    catch (Exception)
+                    {
 
 
-                    f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
+
+                    }
+
+
+
+
+
+                    f.Svarsalternativslista.Add(s);
+
+
+
+
+
+
                 }
+
+
+
+
+
+                //for (int i = 1; i < node.ChildNodes.Count; i++)
+                //{
+                //    Svarsalternativ s = new Svarsalternativ();
+                //    s.Svaren = node.ChildNodes[i].InnerText;    //Det rätta svaret som laddas in i listan har attributet rätt="y" 
+
+
+
+
+                //    if (node.ChildNodes[i].Attributes.Count == 0)
+                //    {
+                //        s.RättSvar = "fel";
+                //    }
+                //    else if (node.ChildNodes[i].Attributes.Count >= 1)
+                //    {
+                //        s.RättSvar = "rätt";
+                //    }
+
+
+
+
+                //    //f.Kategori = node["Frågan"].ParentNode.ParentNode.Name;
+
+
+
+
+                //    f.Svarsalternativslista.Add(s);                   //det ska vi jämföra mot sen under rättningen av provet vad användaren valt.
+                //}
+
 
                 Lillatestet.Add(f);
 
+
             }
             return Lillatestet;
+
         }
 
         public List<Fråga> xmlToListStora()
