@@ -11,5 +11,6 @@ namespace JE_Bank
         public string Användartyp { get; set; }
         public bool Certifierad { get; set; }
         public DateTime Godkänd { get; set; }
+        public DateTime Utförd { get; set; }
     }
 }
