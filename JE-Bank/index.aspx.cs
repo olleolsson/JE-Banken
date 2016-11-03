@@ -215,22 +215,26 @@ namespace JE_Bank
                 }
 
                 int antal = 0;
+                int antal2 = 0;
                 foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
                 {
-                    
-                    if (c.Checked && c.Value == "rätt")
+                    if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ
                     {
-                        antal++;
-                        if (antal > 1)
+                        if (c.Value == "rätt")
                         {
-                            räkna++;
+                            antal++;
                         }
-                        if (antal == 2)
+
+                        if (c.Value == "fel")
                         {
-                            antal--;
                             antal--;
                         }
                     }
+                    
+                    if (antal == 2)
+                    {
+                        räkna++;
+                    }                   
                     c.Disabled = true;
                 }
                 ptagg.InnerText = räkna.ToString();
