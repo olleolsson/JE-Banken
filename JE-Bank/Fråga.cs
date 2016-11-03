@@ -12,7 +12,7 @@ namespace JE_Bank
         public string Bild { get; set; }
         public List<Svarsalternativ> Svarsalternativslista { get; set; } 
 
-        public Fråga()
+        public Fråga() //skapar nylista som innehåller svarsalternativ varje gång vi gör ett objekt av klassen fråga
         {
             Svarsalternativslista = new List<Svarsalternativ>();
         }

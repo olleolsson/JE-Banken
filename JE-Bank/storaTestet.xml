@@ -6,67 +6,67 @@
       <fråga>
         <Frågan>Vilket år gjorde Christer Fuglesang sin andra rymdfärd med rymdfärjan Discovery?</Frågan>
         <svar rätt="y">2009</svar>
-        <svar>2008</svar>
+        <svar fel="">2008</svar>
         <svar rätt="y">2007</svar>
-        <svar>2010</svar>
+        <svar fel="">2010</svar>
       </fråga>
       <fråga>
         <Frågan>Vad heter spelet där man blir jagad på en järnvägsräls efter att blivit påkommen när man målar grafitti?</Frågan>
         <svar rätt="y">Subway Surfers</svar>
-        <svar>Run run run</svar>
-        <svar>Temple Run</svar>
-        <svar>Metro underground</svar>
+        <svar fel="">Run run run</svar>
+        <svar fel="">Temple Run</svar>
+        <svar fel="">Metro underground</svar>
       </fråga>
       <fråga>
         <Frågan>Vad är den romerska siffran för 100?</Frågan>
         <svar rätt="y">C</svar>
-        <svar>M</svar>
-        <svar>D</svar>
-        <svar>X</svar>
+        <svar fel="">M</svar>
+        <svar fel="">D</svar>
+        <svar fel="">X</svar>
       </fråga>
       <fråga>
         <Frågan>
         Vatten är en fantastisk kemisk förening av väte och syre som är nödvändigt för allt känt liv. Vid vilken temperatur är vatten som tyngst(högst densitet)?
       </Frågan>
         <svar rätt="y">4°C</svar>
-        <svar>0°C</svar>
-        <svar>-4°C</svar>
-        <svar>-10°C</svar>
+        <svar fel="">0°C</svar>
+        <svar fel="">-4°C</svar>
+        <svar fel="">-10°C</svar>
       </fråga>
       <fråga>
         <Frågan>Vilken stad befinner du dig i om du står på den klassiska bron Ponte Vecchio som går över floden Arno i Italien?</Frågan>
         <svar rätt="y">Florens</svar>
         <svar rätt="y">Verona</svar>
-        <svar>Rom</svar>
-        <svar>Venedig</svar>
+        <svar fel="">Rom</svar>
+        <svar fel="">Venedig</svar>
       </fråga>
       <fråga>
         <Frågan>Vad kallas det klassiska flygplan som transporterar USA:s president?</Frågan>
         <svar rätt="y">Air Force One</svar>
-        <svar>Marine One</svar>
-        <svar>White house One</svar>
-        <svar>Trump Force One</svar>
+        <svar fel="">Marine One</svar>
+        <svar fel="">White house One</svar>
+        <svar fel="">Trump Force One</svar>
       </fråga>
       <fråga>
         <Frågan>I vilket land framställs spritdrycken Grappa?</Frågan>
         <svar rätt="y">Italien</svar>
-        <svar>Grekland</svar>
-        <svar>Bulgarien</svar>
-        <svar>Armenien</svar>
+        <svar fel="">Grekland</svar>
+        <svar fel="">Bulgarien</svar>
+        <svar fel="">Armenien</svar>
       </fråga>
       <fråga>
         <Frågan>Filmcitat - vilken film? "Stupid is as stupid does!"</Frågan>
         <svar rätt="y">Forrest Gump</svar>
-        <svar>Pulp fiction</svar>
-        <svar>The Green mile</svar>
-        <svar>American pie</svar>
+        <svar fel="">Pulp fiction</svar>
+        <svar fel="">The Green mile</svar>
+        <svar fel="">American pie</svar>
       </fråga>
       <fråga>
         <Frågan>Hur många par kromosomer har människan normalt?</Frågan>
         <svar rätt="y">23</svar>
-        <svar>12</svar>
-        <svar>24</svar>
-        <svar>21</svar>
+        <svar fel="">12</svar>
+        <svar fel="">24</svar>
+        <svar fel="">21</svar>
       </fråga>
     </Produkter>
     <Ekonomi>
@@ -78,123 +78,123 @@
         humanity's survival."
       </Frågan>
         <svar rätt="y">Interstellar</svar>
-        <svar>Project Almanac</svar>
-        <svar>Guardians of the Galaxy </svar>
-        <svar>Star Wars</svar>
+        <svar fel="">Project Almanac</svar>
+        <svar fel="">Guardians of the Galaxy </svar>
+        <svar fel="">Star Wars</svar>
       </fråga>
       <fråga>
         <Frågan>23 maj 2015 i Wien tog Måns "mums-mums" Zelmerlöw hem Sveriges sjätte seger i Eurovision song contest. Vårt grannland Norge har inte lika många segrar. Hur många segrar har dom?</Frågan>
         <svar rätt="y">3</svar>
-        <svar>2</svar>
-        <svar>1</svar>
-        <svar>0</svar>
+        <svar fel="">2</svar>
+        <svar fel="">1</svar>
+        <svar fel="">0</svar>
       </fråga>
       <fråga>
         <Frågan>Vilken ministerpost i regeringen har Magdalena Andersson?</Frågan>
         <svar rätt="y">Finansminister</svar>
-        <svar>Socialminister</svar>
-        <svar>Utbildningsminister</svar>
-        <svar>Stadsminister</svar>
+        <svar fel="">Socialminister</svar>
+        <svar fel="">Utbildningsminister</svar>
+        <svar fel="">Stadsminister</svar>
       </fråga>
       <fråga>
         <Frågan>Vilken medelhastighet har ett fordon som färdas 60km på 4 timmar? </Frågan>
         <svar rätt="y">15km/h</svar>
-        <svar>30km/h</svar>
-        <svar>20km/h</svar>
-        <svar>25km/h</svar>
+        <svar fel="">30km/h</svar>
+        <svar fel="">20km/h</svar>
+        <svar fel="">25km/h</svar>
       </fråga>
       <fråga>
         <Frågan>Vad heter fotbollslaget Barcelona FC:s hemmaarena?</Frågan>
         <svar rätt="y">Camp Nou</svar>
         <svar rätt="y">Olympiastadion</svar>
-        <svar>San Siro</svar>
-        <svar>Norrporten Arena</svar>
+        <svar fel="">San Siro</svar>
+        <svar fel="">Norrporten Arena</svar>
       </fråga>
       <fråga>
         <Frågan>Handelns Utredningsinstitut har sedan 1988 utsett årets julklapp. Vilken var årets julklapp 2014</Frågan>
         <svar rätt="y">Aktivitetsarmbandet</svar>
-        <svar>Bakmaskin</svar>
-        <svar>Värmefilt</svar>
-        <svar>Kniv</svar>
+        <svar fel="">Bakmaskin</svar>
+        <svar fel="">Värmefilt</svar>
+        <svar fel="">Kniv</svar>
       </fråga>
       <fråga>
         <Frågan>Vem räknas, tillsammans med Georges Braque, som kubismens fader?</Frågan>
         <svar rätt="y">Pablo Picasso</svar>
-        <svar>Leonardo Davinci</svar>
-        <svar>Michelangelo</svar>
-        <svar>Rafael</svar>
+        <svar fel="">Leonardo Davinci</svar>
+        <svar fel="">Michelangelo</svar>
+        <svar fel="">Rafael</svar>
       </fråga>
       <fråga>
         <Frågan>Vem var Michael Jacksons första fru?</Frågan>
         <svar rätt="y">Lisa Marie Presley</svar>
-        <svar>Nathalie Olsson</svar>
-        <svar>Daiela Edvinsson</svar>
-        <svar>Victoria Olsson</svar>
+        <svar fel="">Nathalie Olsson</svar>
+        <svar fel="">Daiela Edvinsson</svar>
+        <svar fel="">Victoria Olsson</svar>
       </fråga>
       <fråga>
         <Frågan>Hur skrivs detta årtalet 2013 med romerska siffror?</Frågan>
         <svar rätt="y">MMXIII</svar>
-        <svar>MCXIII</svar>
+        <svar fel="">MCXIII</svar>
         <svar rätt="y">CCXIII</svar>
-        <svar>XXIIII</svar>
+        <svar fel="">XXIIII</svar>
       </fråga>
     </Ekonomi>
     <Etik>
       <fråga>
         <Frågan>Vilken är världens största stad (sett till befolkningsantal)?</Frågan>
         <svar rätt="y">Tokyo</svar>
-        <svar>Mexico City</svar>
-        <svar>New York</svar>
-        <svar>Bejing</svar>
+        <svar fel="">Mexico City</svar>
+        <svar fel="">New York</svar>
+        <svar fel="">Bejing</svar>
       </fråga>
       <fråga>
         <Frågan>Den 10 april 1912 lämnade Titanic sin hamn för sin jungfruresa, som alla vet kom Titanic aldrig  fram till sin slutdestination utan den 14 April kolliderade oceanångaren med ett isberg och katastrofen var ett faktum. Vilken start och slutdestination hade Titanic?</Frågan>
         <svar rätt="y">Southampton - New York </svar>
-        <svar>Liverpool - New York</svar>
-        <svar>London - New York</svar>
-        <svar>Manchester - New York</svar>
+        <svar fel="">Liverpool - New York</svar>
+        <svar fel="">London - New York</svar>
+        <svar fel="">Manchester - New York</svar>
       </fråga>
       <fråga>
         <Frågan>i vilken svensk stad hålls varje år musikfestivalen Peace and Love?</Frågan>
         <svar rätt="y">Borlänge</svar>
-        <svar>Karlstad</svar>
-        <svar>Mora</svar>
-        <svar>Norrköping</svar>
+        <svar fel="">Karlstad</svar>
+        <svar fel="">Mora</svar>
+        <svar fel="">Norrköping</svar>
       </fråga>
       <fråga>
         <Frågan>Vad heter den flod som rinner förbi Hamburg?</Frågan>
         <svar rätt="y">Elbe</svar>
-        <svar>Donau</svar>
-        <svar>Nilen</svar>
-        <svar>Ljungan</svar>
+        <svar fel="">Donau</svar>
+        <svar fel="">Nilen</svar>
+        <svar fel="">Ljungan</svar>
       </fråga>
       <fråga>
         <Frågan>Vad heter Afghanistans huvudstad?</Frågan>
         <svar rätt="y">Kabul</svar>
-        <svar>Stockholm</svar>
-        <svar>London</svar>
-        <svar>Rom</svar>
+        <svar fel="">Stockholm</svar>
+        <svar fel="">London</svar>
+        <svar fel="">Rom</svar>
       </fråga>
       <fråga>
         <Frågan>Vem gav 1755 ut kokboksklassikern Hjelpreda I hushållningen för unga Fruentim(b)er</Frågan>
         <svar rätt="y">Cajsa Warg</svar>
-        <svar>Erika Svensson</svar>
-        <svar>Ebert Olofsson</svar>
-        <svar>Sten-Gunnar Andersson</svar>
+        <svar fel="">Erika Svensson</svar>
+        <svar fel="">Ebert Olofsson</svar>
+        <svar fel="">Sten-Gunnar Andersson</svar>
       </fråga>
       <fråga>
         <Frågan>Vad heter Jerry Williams på riktigt?</Frågan>
         <svar rätt="y">Erik Fernström</svar>
-        <svar>Daniel Edvinsson</svar>
+        <svar fel="">Daniel Edvinsson</svar>
         <svar rätt="y">Victor Olsson</svar>
-        <svar>Nathalie Olsson</svar>
+        <svar fel="">Nathalie Olsson</svar>
       </fråga>
       <fråga>
         <Frågan>Klassiska telefonnummer, vilket nummer var föregångare till 112?</Frågan>
         <svar rätt="y">90 000</svar>
-        <svar>111</svar>
-        <svar>113</svar>
-        <svar>80 000</svar>
+        <svar fel="">111</svar>
+        <svar fel="">113</svar>
+        <svar fel="">80 000</svar>
       </fråga>
     </Etik>
   </Frågor>

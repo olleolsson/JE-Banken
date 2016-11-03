@@ -28,10 +28,10 @@ namespace JE_Bank
         {
             btnFacit.Visible = false;
             Postgres pg = new Postgres();
-            användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
-            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
+            användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());// tar emot parameter ifrån login och sätter det som användarnamn
+            användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn)); // Fråga till databasen som kollar om användaren är certifierad
 
-            if (användare.Certifierad == true)
+            if (användare.Certifierad == true) // laddar olika test beroende på om användaren är certifierad eller ej.
             {
                 sökvägXML = "lillaTestet.xml";
                 AppendProv(xmlToList(sökvägXML));
@@ -44,7 +44,7 @@ namespace JE_Bank
             }
         }
 
-        public void AppendProv(List<Fråga> frågor)
+        public void AppendProv(List<Fråga> frågor) // metod som skapar alla våra kontroller dynamiskt.
         {
             int frågaNr = 1;
             int svarId = 1;
@@ -94,7 +94,7 @@ namespace JE_Bank
                     }
                     svarText.InnerText = s.Svaren;
 
-                    if (x >= 2)
+                    if (x >= 2) // lägger till checkboxar
                     {
                         input.Value = s.RättSvar;
                         input.Name = "hej" + svarId;
@@ -110,7 +110,7 @@ namespace JE_Bank
                         }
                     }
 
-                    if (x == 1)
+                    if (x == 1) // lägger till radio buttons
                     {
                         rdbtn.Value = s.RättSvar;
                         rdbtn.Name = "hej" + svarId;
@@ -129,7 +129,7 @@ namespace JE_Bank
                     svar.Controls.Add(svarText);
                     frågeruta.Controls.Add(svar);
 
-                    if (f.Bild != null)
+                    if (f.Bild != null) //lägger till div innehållandes bild.
                     {
                         frågeruta.Controls.Add(bild);
                     }
@@ -138,7 +138,7 @@ namespace JE_Bank
             }
         }
 
-        public List<Fråga> xmlToList(string sökvägXML)
+        public List<Fråga> xmlToList(string sökvägXML) //skapar en lista av xmlfilen innehållandes objekt.
         {
             List<Fråga> Testet = new List<Fråga>();
             string path = Server.MapPath(sökvägXML);
@@ -185,13 +185,13 @@ namespace JE_Bank
             return Testet;
         }
 
-        protected void btnRätta_Click(object sender, EventArgs e)
+        protected void btnRätta_Click(object sender, EventArgs e) // knapp för att rätta testet.
         {
             Rätta();
             btnFacit.Visible = true;
         }
 
-        public void Rätta()
+        public void Rätta() // metod för att rätta testet
         {
             Fråga k = new Fråga();
             int antalrätt = 0;
@@ -209,7 +209,7 @@ namespace JE_Bank
                 antalfrågor++;
             }
 
-            foreach (Fråga f in xmlToList(sökvägXML))
+            foreach (Fråga f in xmlToList(sökvägXML))//räknar antalet frågor i varje kategori
             {
                 if (f.Kategori =="Etik")
                 {
@@ -225,13 +225,13 @@ namespace JE_Bank
                 }
             }
 
-                foreach (HtmlInputRadioButton r in radioList)
+                foreach (HtmlInputRadioButton r in radioList) // kollar vilka radio buttons som är checked och om de har value rätt.
                 {
                     if (r.Checked && r.Value == "rätt")
                     {
                         antalrätt++;
 
-                            if (r.ID.Contains("Etik"))
+                            if (r.ID.Contains("Etik"))//kollar hur många rätt man har i varje kategori.
                             {
                                 antalrättetik++;
                             }
@@ -268,7 +268,7 @@ namespace JE_Bank
                     {                        
                         antalrätt++;
 
-                            if (c.ID.Contains("Etik"))
+                            if (c.ID.Contains("Etik"))//kollar hur många rätt man har i varje kategori.
                             {
                                 antalrättetik++;
                             }
@@ -282,10 +282,10 @@ namespace JE_Bank
                                 antalrättprodukter++;
                             }                      
                     }
-                    c.Disabled = true;
+                    c.Disabled = true; //låser checkboxar när man rättat testet.
                 }
 
-                if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
+                if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6)) // kollar så att man har 70%rätt på hela testet och minst 60% rätt i varje kategori.
             {
                 pg.sättTidGodkänd(användare.Användarnamn);
                 pg.sättTidGjortTest(användare.Användarnamn);
@@ -296,7 +296,7 @@ namespace JE_Bank
             }
         }
 
-        protected void btnFacit_Click(object sender, EventArgs e)
+        protected void btnFacit_Click(object sender, EventArgs e)//Visar facit
         {
             HtmlGenericControl diven = new HtmlGenericControl("div");
 

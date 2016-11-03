@@ -22,12 +22,12 @@ namespace JE_Bank
             {
                 lblDatum.Text = "Du har inte gjort något test ännu";
             }
-            användare.Utförd = pg.hämtaDatumGjortTest(användare.Användarnamn);
+            användare.Utförd = pg.hämtaDatumGjortTest(användare.Användarnamn);//hämtar datum då användare senast gjort testet
         }
 
         protected void btnStartaTest_Click(object sender, EventArgs e)
         {
-             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn);
+             användare.Godkänd = pg.hämtaDatumGodkänd(användare.Användarnamn); // hämtar datum när användare senast blev godkänd på ett test
 
              if ((DateTime.Now - användare.Godkänd).Days > 365)
              {

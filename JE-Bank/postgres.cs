@@ -15,27 +15,8 @@ namespace JE_Bank
 
         NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["interaktiva_g26"].ConnectionString);
 
-        public string TestSqlFråga()
-        {
-            conn.Open();
-            
-            string fråga = "SELECT användarnamn FROM användare";
 
-            NpgsqlCommand cmd = new NpgsqlCommand(fråga, conn);
-            NpgsqlDataReader reader = cmd.ExecuteReader();
-            Users nyAnvändare = new Users();
-
-            while (reader.Read())
-                nyAnvändare = new Users()
-                {
-                    Användarnamn = reader["användarnamn"].ToString()
-                };
-                reader.Close();
-                conn.Close();               
-            return nyAnvändare.Användarnamn;
-        }
-
-        public string AnvändarTyp(string anvandare)
+        public string AnvändarTyp(string anvandare)//fråga till databasen för att se om användare är certifierad.
         {
             conn.Open();
 
