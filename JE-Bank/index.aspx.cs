@@ -22,7 +22,8 @@ namespace JE_Bank
         Users användare = new Users();
 
         protected void Page_Load(object sender, EventArgs e)
-        {      
+        {
+            btnFacit.Visible = false;
             Postgres pg = new Postgres();
             användare.Användarnamn = Server.UrlDecode(Request.QueryString["Parameter"].ToString());
             användare.Certifierad = Convert.ToBoolean(pg.AnvändarTyp(användare.Användarnamn));
@@ -177,6 +178,7 @@ namespace JE_Bank
         protected void btnRätta_Click(object sender, EventArgs e)
         {
             Rätta();
+            btnFacit.Visible = true;
         }
 
         public void Rätta()
@@ -186,15 +188,19 @@ namespace JE_Bank
 
                 foreach (HtmlInputRadioButton r in radioList)
                 {
+                    
                     if (r.Checked && r.Value=="rätt")
                     {
                         räkna++;
-                    }                   
+                    }
+
+                    r.Disabled = true;
                 }
 
                 int antal = 0;
                 foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
                 {
+                    
                     if (c.Checked && c.Value == "rätt")
                     {
                         antal++;
@@ -208,18 +214,24 @@ namespace JE_Bank
                             antal--;
                         }
                     }
+                    c.Disabled = true;
                 }
                 ptagg.InnerText = räkna.ToString();
 
-                if (räkna <=11)
-                {
-                    pg.sättTidGodkänd(användare.Användarnamn);
-                }
-                if (räkna >= 10)
-                {
-                    pg.sättTidGjortTest(användare.Användarnamn);
-                }
+                //if (räkna <=11)
+                //{
+                //    pg.sättTidGodkänd(användare.Användarnamn);
+                //}
+                //if (räkna >= 10)
+                //{
+                //    pg.sättTidGjortTest(användare.Användarnamn);
+                //}
             }
+        }
+
+        protected void btnFacit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
