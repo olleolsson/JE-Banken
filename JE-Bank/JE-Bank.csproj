@@ -66,6 +66,7 @@
     <Content Include="dlls\Mono.Security.dll" />
     <Content Include="dlls\Npgsql.dll" />
     <Content Include="index.aspx" />
+    <Content Include="inloggad.aspx" />
     <Content Include="lillaTestet.xml" />
     <Content Include="login.aspx" />
     <Content Include="storaTestet.xml" />
@@ -80,6 +81,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inloggad.aspx.cs">
+      <DependentUpon>inloggad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inloggad.aspx.designer.cs">
+      <DependentUpon>inloggad.aspx</DependentUpon>
     </Compile>
     <Compile Include="logIn.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
