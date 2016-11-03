@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Facit.aspx.cs" Inherits="JE_Bank.Facit" %>
-
+<%@ PreviousPageType VirtualPath="~/index.aspx" %> 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <p id="ptagg1" runat="server"></p>
     </div>
     </form>
 </body>

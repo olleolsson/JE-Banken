@@ -18,9 +18,10 @@ namespace JE_Bank
         public List<Fråga> frågor = new List<Fråga>();
         public List<HtmlInputCheckBox> checkList = new List<HtmlInputCheckBox>();
         public List<HtmlInputRadioButton> radioList = new List<HtmlInputRadioButton>();
-        Dictionary<string, string> facit = new Dictionary<string, string>();
+        public Dictionary<string, string> facit = new Dictionary<string, string>();
         Postgres pg = new Postgres();
         Users användare = new Users();
+        string sökvägXML;
 
         protected void Page_Load(object sender, EventArgs e)
         {      
@@ -31,13 +32,13 @@ namespace JE_Bank
 
             if (användare.Certifierad == true)
             {
-                string sökvägXML = "lillaTestet.xml";
+                sökvägXML = "lillaTestet.xml";
                 AppendProv(xmlToList(sökvägXML));
             }
 
             if (användare.Certifierad == false)
             {
-                string sökvägXML = "storaTestet.xml";
+                sökvägXML = "storaTestet.xml";
                 AppendProv(xmlToList(sökvägXML));
             }           
         }
@@ -136,8 +137,6 @@ namespace JE_Bank
                         frågeruta.Controls.Add(bild);
                     }
                    
-
-                    ptagg.InnerText = facit.ToString();
                     allafrågor.Controls.Add(frågeruta);
                 }
             }
@@ -201,49 +200,185 @@ namespace JE_Bank
         public void Rätta()
         {
             {
-                int räkna = 0;
+                Fråga k = new Fråga();
+                int antalrätt = 0;
+                int antalValdaSvarsalternativ = 0;
+                int antalfrågor = 0;
+                int antalrättetik = 0;
+                int antalrättekonomi = 0;
+                int antalrättprodukter = 0;
+                int antalfrågoretik = 0;
+                int antalfrågorekonomi = 0;
+                int antalfrågorprodukter = 0;
 
-                foreach (HtmlInputRadioButton r in radioList)
-                {
+                //foreach (HtmlInputRadioButton r in radioList)
+                //{
                     
-                    if (r.Checked && r.Value=="rätt")
-                    {
-                        räkna++;
-                    }                   
+                //    if (r.Checked && r.Value=="rätt")
+                //    {
+                //        antalrätt++;
+                //    }                   
 
-                    r.Disabled = true;
+                //    r.Disabled = true;
+                //}
+
+                
+
+                foreach (Fråga f in xmlToList(sökvägXML))//räknar antalet frågor för att vi ska kunna veta hur mkt 70% är när vi rättar.
+                {
+                    antalfrågor++;
                 }
 
-                int antal = 0;
-
-                foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
+                foreach (Fråga f in xmlToList(sökvägXML))
                 {
-                    if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ
+                    if (f.Kategori =="Etik")
                     {
-                        if (c.Value == "rätt")
+                        antalfrågoretik++;
+                        foreach (HtmlInputRadioButton r in radioList)
                         {
-                            antal++;
+
+                            if (r.Checked && r.Value == "rätt")
+                            {
+                                antalrätt++;
+                                antalrättetik++;
+                            }
+
+                            r.Disabled = true;
                         }
 
-                        if (c.Value == "fel")
+                        foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
                         {
-                            antal--;
+                            if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
+                            {
+                                if (c.Value == "rätt")
+                                {
+                                    antalValdaSvarsalternativ++;
+                                }
+
+                                if (c.Value == "fel")
+                                {
+                                    antalValdaSvarsalternativ--;
+                                }
+                            }
+
+                            if (antalValdaSvarsalternativ == 2)
+                            {
+                                antalrätt++;
+                                antalrättetik++;
+                            }
+                            c.Disabled = true;
                         }
                     }
-                    
-                    if (antal == 2)
-                    {
-                        räkna++;
-                    }                   
-                    c.Disabled = true;
-                }
-                ptagg.InnerText = räkna.ToString();
 
-                //if (räkna <=11)
+                    if (f.Kategori =="Ekonomi")
+                    {
+                        antalfrågorekonomi++;
+                        foreach (HtmlInputRadioButton r in radioList)
+                        {
+
+                            if (r.Checked && r.Value == "rätt")
+                            {
+                                antalrätt++;
+                                antalrättekonomi++;
+                            }
+
+                            r.Disabled = true;
+                        }
+
+                        foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
+                        {
+                            if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
+                            {
+                                if (c.Value == "rätt")
+                                {
+                                    antalValdaSvarsalternativ++;
+                                }
+
+                                if (c.Value == "fel")
+                                {
+                                    antalValdaSvarsalternativ--;
+                                }
+                            }
+
+                            if (antalValdaSvarsalternativ == 2)
+                            {
+                                antalrätt++;
+                                antalrättekonomi++;
+                            }
+                            c.Disabled = true;
+                        }
+                    }
+
+                    if (f.Kategori == "Produkter")
+                    {
+                        antalfrågorprodukter++;
+                        foreach (HtmlInputRadioButton r in radioList)
+                        {
+
+                            if (r.Checked && r.Value == "rätt")
+                            {
+                                antalrätt++;
+                                antalrättprodukter++;
+                            }
+
+                            r.Disabled = true;
+                        }
+
+                        foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
+                        {
+                            if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
+                            {
+                                if (c.Value == "rätt")
+                                {
+                                    antalValdaSvarsalternativ++;
+                                }
+
+                                if (c.Value == "fel")
+                                {
+                                    antalValdaSvarsalternativ--;
+                                }
+                            }
+
+                            if (antalValdaSvarsalternativ == 2)
+                            {
+                                antalrätt++;
+                                antalrättprodukter++;
+                            }
+                            c.Disabled = true;
+                        }
+                    }
+                }
+
+                //foreach (HtmlInputCheckBox c in checkList)//Metod för att rätta frågor med 2 rätta svar där båda rätta svaren måste vara ifyllda.
+                //{
+                //    if (c.Checked)//Ifsats för att man inte ska kunna få rätt ifall man fyller i alla alternativ.
+                //    {
+                //        if (c.Value == "rätt")
+                //        {
+                //            antalValdaSvarsalternativ++;
+                //        }
+
+                //        if (c.Value == "fel")
+                //        {
+                //            antalValdaSvarsalternativ--;
+                //        }
+                //    }
+
+                //    if (antalValdaSvarsalternativ == 2)
+                //    {
+                //        antalrätt++;
+                //    }
+                //    c.Disabled = true;
+                //}
+                ptagg.InnerText = antalrätt.ToString();
+
+
+                //if (antalrätt > (antalfrågor * 0.7) && antalrättetik > (antalfrågoretik * 0.6) && antalrättekonomi > (antalfrågorekonomi * 0.6) && antalrättprodukter > (antalfrågorprodukter * 0.6))
                 //{
                 //    pg.sättTidGodkänd(användare.Användarnamn);
+                //    pg.sättTidGjortTest(användare.Användarnamn);
                 //}
-                //if (räkna >= 10)
+                //if (antalrätt < (antalfrågor * 0.7) || antalrättetik < (antalfrågoretik * 0.6) || antalrättekonomi < (antalfrågorekonomi * 0.6) || antalrättprodukter < (antalfrågorprodukter * 0.6))
                 //{
                 //    pg.sättTidGjortTest(användare.Användarnamn);
                 //}
@@ -252,7 +387,19 @@ namespace JE_Bank
         
         protected void btnFacit_Click(object sender, EventArgs e)       
         {
-            Response.Redirect("~/facit.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+            //Response.Redirect("~/facit.aspx?Parameter=" + Server.UrlEncode(användare.Användarnamn));
+
+            HtmlGenericControl diven = new HtmlGenericControl("div");
+
+
+            foreach (KeyValuePair<string, string> entry in facit)
+            {
+                diven = new HtmlGenericControl("div");
+                diven.InnerText = entry.Value + " " + entry.Key;
+                ptagg.Controls.Add(diven);
+
+
+            }
         }
     }
 }
