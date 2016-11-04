@@ -34,7 +34,7 @@ namespace JE_Bank
 
             if (( DateTime.Now - användare.Utförd).TotalDays < 7)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du måste vänta 7 dagar innan du gör testet igen');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Du måste vänta 7 dagar ifrån provtillfället innan nästa försök kan genomföras');", true);
             }
 
                  else
